@@ -66,7 +66,7 @@
       box-shadow: 0 0 20px rgba(30,111,217,0.35);
       flex-shrink: 0;
     }
-    .nav-logo-name { font-size: 15px; font-weight: 600; color: white; letter-spacing: 0.4px; display: block; }
+    .nav-logo-name { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: white; letter-spacing: 0.4px; display: block; }
     .nav-logo-tagline { font-family: var(--font-mono); font-size: 9px; color: var(--steel); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: 1px; }
 
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
@@ -270,12 +270,12 @@
     .section-header { text-align: center; margin-bottom: 4rem; }
     .section-title {
       font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300; color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem;
+      font-weight: 400; color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem;
     }
     .section-title em { font-style: italic; color: var(--clinical-blue); }
     .section-subtitle {
       font-size: 16px; color: var(--text-mid); max-width: 540px;
-      margin: 0 auto; font-weight: 300; line-height: 1.7;
+      margin: 0 auto; font-weight: 400; line-height: 1.7;
     }
 
     .services-grid {
@@ -314,7 +314,7 @@
       font-family: var(--font-display); font-size: 1.45rem; font-weight: 400;
       color: var(--text-dark); line-height: 1.2; margin-bottom: 0.9rem;
     }
-    .card-desc { font-size: 13.5px; color: var(--text-mid); line-height: 1.7; font-weight: 300; flex: 1; }
+    .card-desc { font-size: 13.5px; color: var(--text-mid); line-height: 1.7; font-weight: 400; flex: 1; }
     .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
     .tag {
       font-family: var(--font-mono); font-size: 10px; padding: 3px 10px;
@@ -359,8 +359,8 @@
     }
     .pillar:hover::after { transform: scaleX(1); }
     .pillar-icon { font-size: 1.75rem; margin-bottom: 1.2rem; display: block; }
-    .pillar-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: white; margin-bottom: 0.7rem; }
-    .pillar-desc { font-size: 13px; color: rgba(200,216,232,0.6); line-height: 1.6; font-weight: 300; }
+    .pillar-title { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 0.7rem; }
+    .pillar-desc { font-size: 13px; color: rgba(200,216,232,0.6); line-height: 1.6; font-weight: 400; }
 
     /* ── DUAL BRAND ── */
     .dual-brand { display: grid; grid-template-columns: 1fr 1fr; }
@@ -406,7 +406,7 @@
     .brand-medical .brand-title em { color: var(--clinical-blue); }
     .brand-security .brand-title em { color: #5B9FE8; }
 
-    .brand-desc { font-size: 14px; line-height: 1.75; font-weight: 300; margin-bottom: 1.75rem; }
+    .brand-desc { font-size: 14px; line-height: 1.75; font-weight: 400; margin-bottom: 1.75rem; }
     .brand-medical .brand-desc { color: var(--text-mid); }
     .brand-security .brand-desc { color: var(--steel); }
 
@@ -442,8 +442,8 @@
     }
     .coverage-inner { display: flex; align-items: center; justify-content: space-between; gap: 4rem; }
     .coverage-text { flex: 1; }
-    .coverage-title { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.2; }
-    .coverage-desc { font-size: 14px; color: var(--text-mid); line-height: 1.7; font-weight: 300; max-width: 420px; margin-bottom: 2rem; }
+    .coverage-title { font-family: var(--font-display); font-size: 2rem; font-weight: 400; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.2; }
+    .coverage-desc { font-size: 14px; color: var(--text-mid); line-height: 1.7; font-weight: 400; max-width: 420px; margin-bottom: 2rem; }
     .zones { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .zone {
       padding: 6px 14px; background: white; border: 1px solid var(--border-light);
@@ -485,7 +485,7 @@
     .cta-banner p {
       font-size: 15px; color: rgba(232,242,255,0.72); margin-bottom: 2.5rem;
       max-width: 510px; margin-left: auto; margin-right: auto;
-      font-weight: 300; line-height: 1.7;
+      font-weight: 400; line-height: 1.7;
     }
     .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
@@ -499,7 +499,7 @@
       padding-bottom: 4rem; border-bottom: 1px solid rgba(200,216,232,0.08);
       margin-bottom: 2rem;
     }
-    .footer-desc { font-size: 13px; font-weight: 300; line-height: 1.7; color: rgba(200,216,232,0.55); margin-top: 1rem; max-width: 250px; }
+    .footer-desc { font-size: 13px; font-weight: 400; line-height: 1.7; color: rgba(200,216,232,0.55); margin-top: 1rem; max-width: 250px; }
     .footer-rut { font-family: var(--font-mono); font-size: 10px; color: rgba(200,216,232,0.3); margin-top: 1rem; letter-spacing: 0.5px; }
     .footer-col-title { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
