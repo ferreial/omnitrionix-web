@@ -473,6 +473,61 @@
     .metric-num span { color: var(--clinical-blue); }
     .metric-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-light); letter-spacing: 1.5px; text-transform: uppercase; }
 
+    /* ── CLIENTES ── */
+    .clientes {
+      background: var(--white); padding: 6rem 6rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .clientes-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--border-light);
+      border: 1px solid var(--border-light); border-radius: 2px; overflow: hidden;
+      margin-top: 3.5rem;
+    }
+    .cliente-card {
+      background: var(--white); padding: 2rem 2.25rem;
+      display: flex; flex-direction: column; gap: 1.25rem;
+      transition: background 0.25s;
+    }
+    .cliente-card:hover { background: var(--off-white); }
+    .cliente-card-top { display: flex; align-items: center; gap: 1rem; }
+    .cliente-logo-mark {
+      width: 42px; height: 42px; border-radius: 6px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+      letter-spacing: -0.5px; color: white;
+    }
+    .cliente-logo-mark.lm-blue  { background: linear-gradient(135deg, #0A4D8C, #1E6FD9); }
+    .cliente-logo-mark.lm-teal  { background: linear-gradient(135deg, #0A6E6E, #0D9A9A); }
+    .cliente-logo-mark.lm-slate { background: linear-gradient(135deg, #2D4A6B, #3D6491); }
+    .cliente-logo-mark.lm-indigo{ background: linear-gradient(135deg, #3730A3, #4F46E5); }
+    .cliente-logo-mark.lm-gold  { background: linear-gradient(135deg, #92680A, #C9A84C); }
+    .cliente-logo-mark.lm-dark  { background: linear-gradient(135deg, #1F2937, #374151); }
+    .cliente-info {}
+    .cliente-sector {
+      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--text-light);
+    }
+    .cliente-nombre {
+      font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.2; margin-top: 1px;
+    }
+    .cliente-servicio {
+      font-size: 12.5px; color: var(--text-mid); font-weight: 400; line-height: 1.55;
+    }
+    .cliente-tag {
+      font-family: var(--font-mono); font-size: 9px; padding: 3px 9px;
+      border: 1px solid var(--border-light); border-radius: 2px;
+      color: var(--text-light); white-space: nowrap; width: fit-content;
+    }
+
+    @media (max-width: 1100px) {
+      .clientes { padding: 5rem 2rem; }
+      .clientes-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .clientes-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── CONTACTO ── */
     .contacto {
       background: linear-gradient(135deg, var(--clinical-blue) 0%, var(--navy) 100%);
@@ -990,6 +1045,94 @@
         <div class="metric-num"><span>100%</span></div>
         <div class="metric-label">Respaldo<br>documentado</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLIENTES ── -->
+<section class="clientes">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Sectores que atendemos</div>
+    <h2 class="section-title">
+      Clientes que confían en<br><em>nuestra ingeniería</em>
+    </h2>
+    <p class="section-subtitle">
+      Prestamos servicios a instituciones del sector salud, industria y sector privado
+      en la Región del Biobío con el mismo estándar técnico en cada caso.
+    </p>
+  </div>
+
+  <div class="clientes-grid">
+    <div class="cliente-card reveal">
+      <div class="cliente-card-top">
+        <div class="cliente-logo-mark lm-blue">HSP</div>
+        <div class="cliente-info">
+          <div class="cliente-sector">Salud Pública</div>
+          <div class="cliente-nombre">Hospital de Alta Complejidad</div>
+        </div>
+      </div>
+      <p class="cliente-servicio">Mantenimiento preventivo y correctivo de monitores Dräger y redes de gases medicinales en unidades de cuidados intensivos.</p>
+      <span class="cliente-tag">Ingeniería Clínica</span>
+    </div>
+
+    <div class="cliente-card reveal">
+      <div class="cliente-card-top">
+        <div class="cliente-logo-mark lm-teal">CLN</div>
+        <div class="cliente-info">
+          <div class="cliente-sector">Salud Privada</div>
+          <div class="cliente-nombre">Clínica Privada Regional</div>
+        </div>
+      </div>
+      <p class="cliente-servicio">Calibración y certificación de equipos de anestesia Dräger, con emisión de informes técnicos para acreditación SEREMI.</p>
+      <span class="cliente-tag">Equipamiento Médico</span>
+    </div>
+
+    <div class="cliente-card reveal">
+      <div class="cliente-card-top">
+        <div class="cliente-logo-mark lm-slate">IND</div>
+        <div class="cliente-info">
+          <div class="cliente-sector">Industria</div>
+          <div class="cliente-nombre">Planta Industrial Portuaria</div>
+        </div>
+      </div>
+      <p class="cliente-servicio">Diseño e instalación de sistema CCTV Hikvision AX Hybrid Pro con analítica de video, cerco eléctrico perimetral y control de acceso vehicular.</p>
+      <span class="cliente-tag">Seguridad Electrónica</span>
+    </div>
+
+    <div class="cliente-card reveal">
+      <div class="cliente-card-top">
+        <div class="cliente-logo-mark lm-indigo">EDU</div>
+        <div class="cliente-info">
+          <div class="cliente-sector">Educación</div>
+          <div class="cliente-nombre">Institución Educacional</div>
+        </div>
+      </div>
+      <p class="cliente-servicio">Infraestructura de red de datos, cableado estructurado categoría 6A y solución Wi-Fi empresarial de cobertura total en campus.</p>
+      <span class="cliente-tag">Redes y Conectividad</span>
+    </div>
+
+    <div class="cliente-card reveal">
+      <div class="cliente-card-top">
+        <div class="cliente-logo-mark lm-gold">CDM</div>
+        <div class="cliente-info">
+          <div class="cliente-sector">Residencial</div>
+          <div class="cliente-nombre">Condominio Empresarial</div>
+        </div>
+      </div>
+      <p class="cliente-servicio">Sistema integrado de videovigilancia, alarmas perimetrales, portones automáticos y control de acceso biométrico para 3 torres.</p>
+      <span class="cliente-tag">Control de Acceso</span>
+    </div>
+
+    <div class="cliente-card reveal">
+      <div class="cliente-card-top">
+        <div class="cliente-logo-mark lm-dark">MUN</div>
+        <div class="cliente-info">
+          <div class="cliente-sector">Sector Público</div>
+          <div class="cliente-nombre">Institución Gubernamental</div>
+        </div>
+      </div>
+      <p class="cliente-servicio">Auditoría técnica de infraestructura existente, levantamiento de sistemas y consultoría especializada para licitación de equipamiento.</p>
+      <span class="cliente-tag">Auditoría Técnica</span>
     </div>
   </div>
 </section>
