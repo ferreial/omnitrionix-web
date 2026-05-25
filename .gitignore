@@ -1,0 +1,18 @@
+# Claude Code
+.claude/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencias (por si se agrega un bundler en el futuro)
+node_modules/
+dist/
+.cache/
