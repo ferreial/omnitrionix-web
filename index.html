@@ -620,6 +620,12 @@
       color: white; margin-bottom: 0.5rem;
     }
     .form-success p { font-size: 13.5px; color: rgba(200,216,232,0.65); font-weight: 400; }
+    .form-error {
+      display: none; margin-top: 1rem; padding: 10px 14px;
+      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 3px; font-size: 13px; color: rgba(255,180,180,0.9);
+      font-weight: 400; line-height: 1.5;
+    }
 
     @media (max-width: 1100px) {
       .contacto { padding: 5rem 2rem; }
@@ -1221,6 +1227,9 @@
         <button class="form-submit" type="submit">
           Enviar solicitud →
         </button>
+        <div class="form-error" id="formError">
+          Hubo un problema al enviar. Por favor intente nuevamente o escríbanos a contacto@omnitrionix.cl
+        </div>
       </form>
 
       <!-- Estado de éxito -->
@@ -1328,16 +1337,18 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => observer.observe(el));
 
-  // ── Formulario de contacto ──
+  // ── Formulario de contacto → Formspree ──
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
+  const formError   = document.getElementById('formError');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Validación client-side
       const required = contactForm.querySelectorAll('[required]');
       let valid = true;
-
       required.forEach(field => {
         field.style.borderColor = '';
         if (!field.value.trim()) {
@@ -1345,18 +1356,34 @@
           valid = false;
         }
       });
-
       if (!valid) return;
 
-      // Simula envío (aquí se conectaría al backend o servicio de email)
+      // Estado de carga
       const submitBtn = contactForm.querySelector('.form-submit');
       submitBtn.textContent = 'Enviando…';
       submitBtn.disabled = true;
+      formError.style.display = 'none';
 
-      setTimeout(() => {
-        contactForm.style.display = 'none';
-        formSuccess.style.display = 'block';
-      }, 800);
+      try {
+        const res = await fetch('https://formspree.io/f/xgoqzbwe', {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          contactForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+        } else {
+          throw new Error(data?.errors?.[0]?.message || 'Error desconocido');
+        }
+      } catch {
+        formError.style.display = 'block';
+        submitBtn.textContent = 'Enviar solicitud →';
+        submitBtn.disabled = false;
+      }
     });
 
     // Limpia borde rojo al corregir campo
