@@ -1,29 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <defs>
-    <!-- Escudo completo (clip para ECG) -->
+    <!-- Escudo completo -->
     <clipPath id="sc">
       <path d="M9,3 C6,3 3,5 3,8 L3,17 C3,22 6,25 9,27 C12,25 15,22 15,17 L15,8 C15,5 12,3 9,3 Z"/>
     </clipPath>
-    <!-- Mitad izquierda del escudo (clip corazón navy) -->
+    <!-- Mitad izquierda -->
     <clipPath id="sl">
       <path d="M9,3 C6,3 3,5 3,8 L3,17 C3,22 6,25 9,27 Z"/>
     </clipPath>
-    <!-- Mitad derecha del escudo (clip corazón verde) -->
+    <!-- Mitad derecha -->
     <clipPath id="sr">
       <path d="M9,3 C12,3 15,5 15,8 L15,17 C15,22 12,25 9,27 Z"/>
     </clipPath>
   </defs>
 
   <!-- ── Escudo — fondo bicolor ── -->
-  <path d="M9,3 C6,3 3,5 3,8 L3,17 C3,22 6,25 9,27 Z"
-        fill="#1F3A6A"/>
-  <path d="M9,3 C12,3 15,5 15,8 L15,17 C15,22 12,25 9,27 Z"
-        fill="#4A7855"/>
+  <path d="M9,3 C6,3 3,5 3,8 L3,17 C3,22 6,25 9,27 Z" fill="#1F3A6A"/>
+  <path d="M9,3 C12,3 15,5 15,8 L15,17 C15,22 12,25 9,27 Z" fill="#4A7855"/>
 
   <!-- ── Escudo — borde exterior blanco ── -->
   <path d="M9,3 C6,3 3,5 3,8 L3,17 C3,22 6,25 9,27 C12,25 15,22 15,17 L15,8 C15,5 12,3 9,3 Z"
         fill="none" stroke="white" stroke-width="1.15" stroke-linejoin="round"/>
-  <!-- ── Escudo — borde interior (efecto doble) ── -->
+  <!-- ── Escudo — borde interior (doble efecto) ── -->
   <path d="M9,5.5 C7,5.5 5.2,7 5.2,9.5 L5.2,17 C5.2,20.5 7,23 9,25.2 C11,23 12.8,20.5 12.8,17 L12.8,9.5 C12.8,7 11,5.5 9,5.5 Z"
         fill="none" stroke="white" stroke-width="0.6" opacity="0.45"/>
 
@@ -36,29 +34,46 @@
            C9.3,7.8 10,7 11,7 C13,7 15,9.5 15,13 C15,18 9,23 9,23 Z"
         fill="#41714E" clip-path="url(#sr)"/>
 
-  <!-- ── Línea ECG / latido ── -->
+  <!-- ── ECG / latido ── -->
   <polyline points="3,14.5 5,14.5 6,12 7,17.5 8.5,10 10,14.5 12,14.5 15,14.5"
             fill="none" stroke="white" stroke-width="1.05"
             stroke-linecap="round" stroke-linejoin="round"
             clip-path="url(#sc)"/>
 
-  <!-- ── Engranaje grande navy (10 dientes) — centro (20, 23.5) r=5 ── -->
-  <polygon
-    points="20,18.5 20.99,20.46 22.94,19.46 22.59,21.62 24.76,21.96
-            23.2,23.5 24.76,25.05 22.59,25.38 22.94,27.55 20.99,26.54
-            20,28.5 19.01,26.54 17.06,27.55 17.41,25.38 15.25,25.05
-            16.8,23.5 15.25,21.96 17.41,21.62 17.06,19.46 19.01,20.46"
-    fill="#1A294B"/>
-  <circle cx="20" cy="23.5" r="2.2" fill="white"/>
-  <circle cx="20" cy="23.5" r="1.2" fill="#1A294B"/>
+  <!--
+    ENGRANAJE GRANDE navy — 10 dientes, centro (20.5, 23.5)
+    r_out=5  r_in=3.2   pitch=36°
+    4 pts/diente: inner@±11°  outer@±8° desde centro de cada diente
+    Orden: A(in,-11) B(out,-8) C(out,+8) D(in,+11)
+  -->
+  <polygon fill="#1A294B" points="
+    19.89,20.36 19.80,18.55 21.20,18.55 21.11,20.36
+    21.85,20.60 22.85,19.09 23.97,19.90 22.84,21.32
+    23.30,21.95 24.99,21.31 25.42,22.63 23.68,23.11
+    23.68,23.89 25.42,24.37 24.99,25.69 23.30,25.05
+    22.84,25.68 23.97,27.10 22.85,27.91 21.85,26.40
+    21.11,26.64 21.20,28.45 19.80,28.45 19.89,26.64
+    19.15,26.40 18.15,27.91 17.03,27.10 18.16,25.68
+    17.70,25.05 16.01,25.69 15.58,24.37 17.32,23.89
+    17.32,23.11 15.58,22.63 16.01,21.31 17.70,21.95
+    18.16,21.32 17.03,19.90 18.15,19.09 19.15,20.60"/>
+  <circle cx="20.5" cy="23.5" r="2.2" fill="white"/>
+  <circle cx="20.5" cy="23.5" r="1.2" fill="#1A294B"/>
 
-  <!-- ── Engranaje pequeño teal (8 dientes) — centro (23, 15.5) r=3.5 ── -->
-  <polygon
-    points="23,12 23.84,13.47 25.48,13.03 25.03,14.66 26.5,15.5
-            25.03,16.34 25.48,17.98 23.84,17.53 23,19 22.16,17.53
-            20.53,17.98 20.97,16.34 19.5,15.5 20.97,14.66 20.53,13.03
-            22.16,13.47"
-    fill="#31545A"/>
-  <circle cx="23" cy="15.5" r="1.2" fill="white"/>
-  <circle cx="23" cy="15.5" r="0.65" fill="#31545A"/>
+  <!--
+    ENGRANAJE PEQUEÑO teal — 8 dientes, centro (24, 16)
+    r_out=3.8  r_in=2.4   pitch=45°
+    4 pts/diente: inner@±12°  outer@±9° desde centro de cada diente
+  -->
+  <polygon fill="#31545A" points="
+    23.50,13.65 23.41,12.25 24.59,12.25 24.50,13.65
+    25.31,13.99 26.23,12.93 27.07,13.67 26.01,14.69
+    26.35,15.50 27.75,15.41 27.75,16.59 26.35,16.50
+    26.01,17.31 27.07,18.23 26.23,19.07 25.31,18.01
+    24.50,18.35 24.59,19.75 23.41,19.75 23.50,18.35
+    22.69,18.01 21.77,19.07 20.93,18.23 21.99,17.31
+    21.65,16.50 20.25,16.59 20.25,15.41 21.65,15.50
+    21.99,14.69 20.93,13.77 21.77,12.93 22.69,13.99"/>
+  <circle cx="24" cy="16" r="1.4" fill="white"/>
+  <circle cx="24" cy="16" r="0.75" fill="#31545A"/>
 </svg>
