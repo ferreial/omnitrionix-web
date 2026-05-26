@@ -3,987 +3,748 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Omnitrionix SpA — Ingeniería Clínica Biomédica y Sistemas de Seguridad Electrónica. Especialistas en equipamiento médico Dräger y CCTV Hikvision. Gran Concepción, Biobío, Chile." />
+  <meta name="description" content="Omnitrionix SpA — Equipos Médicos e Ingeniería Clínica y Seguridad Electrónica. Especialistas Dräger e Hikvision AX Hybrid Pro. Gran Concepción, Biobío, Chile." />
   <meta name="keywords" content="ingeniería clínica, biomédica, Dräger, anestesia, gases clínicos, CCTV, Hikvision, seguridad electrónica, control de acceso, Concepción, Biobío" />
-  <title>Omnitrionix SpA — Ingeniería y Servicios Tecnológicos</title>
-  <!-- Open Graph -->
+  <title>Omnitrionix SpA | Ingeniería y Servicios Tecnológicos</title>
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_CL" />
-  <meta property="og:site_name" content="Omnitrionix SpA" />
   <meta property="og:title" content="Omnitrionix SpA — Ingeniería y Servicios Tecnológicos" />
-  <meta property="og:description" content="Especialistas en Ingeniería Clínica Biomédica y Sistemas de Seguridad Electrónica. Equipamiento médico Dräger y CCTV Hikvision. Gran Concepción, Biobío, Chile." />
+  <meta property="og:description" content="Especialistas en Equipos Médicos e Ingeniería Clínica y Seguridad Electrónica en Gran Concepción, Biobío, Chile." />
   <meta property="og:url" content="https://omnitrionix.cl/" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     /* ── RESET & TOKENS ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --white: #FFFFFF;
-      --off-white: #F7F9FC;
-      --ice: #E8F2FF;
-      --clinical-blue: #0A4D8C;
-      --clinical-mid: #1666B8;
-      --navy: #1A294B;
-      --navy-mid: #1E3256;
-      --electric: #1E6FD9;
-      --steel: #C8D8E8;
-      --gold: #C9A84C;
-      --brand-green: #41714E;
-      --brand-teal: #31545A;
-      --text-dark: #1A294B;
-      --text-mid: #3A5068;
-      --text-light: #6B8299;
-      --border-light: #D8E6F2;
-      --font-display: 'Cormorant Garamond', serif;
-      --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --navy:    #1A294B;
+      --navy-d:  #111D35;
+      --navy-l:  #243860;
+      --green:   #41714E;
+      --green-l: #4D8860;
+      --teal:    #6FBFA3;
+      --gold:    #C9A84C;
+      --white:   #FFFFFF;
+      --off:     #F5F7FA;
+      --border:  #DDE3EC;
+      --text:    #1A294B;
+      --mid:     #374151;
+      --muted:   #6B7280;
+      --light:   #9CA3AF;
+      --steel:   #C8D8E8;
+      --font-d:  'Cormorant Garamond', serif;
+      --font-b:  'DM Sans', sans-serif;
+      --font-m:  'JetBrains Mono', monospace;
+      --ease:    cubic-bezier(.25,.8,.25,1);
+      --t:       .3s var(--ease);
+      --r:       12px;
+      --s1: 0 1px 4px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --s2: 0 4px 16px rgba(0,0,0,.09), 0 2px 4px rgba(0,0,0,.05);
+      --s3: 0 20px 52px rgba(0,0,0,.13), 0 4px 10px rgba(0,0,0,.07);
     }
 
     html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--off); color: var(--text); overflow-x: hidden; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--white);
-      color: var(--text-dark);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
+    /* ── SCROLL PROGRESS ── */
+    #prog { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 1001; pointer-events: none; transition: width .1s linear; background: linear-gradient(90deg, var(--navy), var(--teal)); }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── REVEAL ── */
+    .rv { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .rv.on { opacity: 1; transform: none; }
+    .d1 { transition-delay: .09s; } .d2 { transition-delay: .18s; } .d3 { transition-delay: .27s; } .d4 { transition-delay: .36s; }
 
     /* ── NAVBAR ── */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem; height: 72px;
-      background: rgba(26,41,75,0.97);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(200,216,232,0.1);
-      transition: height 0.3s ease;
+    #hdr {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: rgba(26,41,75,.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,216,232,.08);
+      transition: box-shadow var(--t);
     }
-    .nav.scrolled { height: 60px; }
+    .hdr-in { display: flex; align-items: center; justify-content: space-between; height: 72px; transition: height var(--t); }
+    #hdr.scrolled { box-shadow: 0 2px 20px rgba(26,41,75,.35); }
+    #hdr.scrolled .hdr-in { height: 62px; }
 
-    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; }
     .nav-logo-mark {
-      width: 38px; height: 38px;
-      background: linear-gradient(135deg, var(--clinical-blue), var(--electric));
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 14px; font-weight: 500;
-      color: white; letter-spacing: -0.5px;
-      box-shadow: 0 0 20px rgba(30,111,217,0.35);
-      flex-shrink: 0;
+      width: 38px; height: 38px; border-radius: 8px; overflow: hidden; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy-l), var(--green));
+      box-shadow: 0 0 18px rgba(65,113,78,.35);
     }
-    .nav-logo-name { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: white; letter-spacing: 0.4px; display: block; }
-    .nav-logo-tagline { font-family: var(--font-mono); font-size: 9px; color: var(--steel); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: 1px; }
-    .nav-logo-img { height: 44px; width: auto; display: block; }
+    .nav-logo-mark img { height: 70px; width: auto; display: block; margin-top: -8px; margin-left: -41px; }
+    .nav-name { font-family: var(--font-b); font-size: 15px; font-weight: 600; color: white; letter-spacing: .3px; display: block; }
+    .nav-tag  { font-family: var(--font-m); font-size: 9px; color: var(--steel); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: 1px; }
 
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 13px; font-weight: 400; letter-spacing: 0.4px;
-      color: var(--steel); text-decoration: none;
-      transition: color 0.2s; position: relative;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1px; background: var(--gold);
-      transform: scaleX(0); transition: transform 0.25s;
-    }
+    .nav-links a { font-size: 13px; font-weight: 400; letter-spacing: .4px; color: rgba(200,216,232,.82); transition: color var(--t); }
     .nav-links a:hover { color: white; }
-    .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-cta {
-      padding: 8px 20px !important;
-      background: var(--clinical-blue) !important;
-      color: white !important; border-radius: 4px;
-      font-weight: 500 !important;
-    }
-    .nav-cta:hover { background: var(--electric) !important; }
-    .nav-cta::after { display: none !important; }
+    .nav-cta { padding: 8px 18px !important; background: var(--green) !important; color: white !important; border-radius: 7px; font-weight: 500 !important; }
+    .nav-cta:hover { background: var(--green-l) !important; transform: translateY(-1px); }
 
-    .menu-btn {
-      display: none; background: none;
-      border: 1px solid rgba(200,216,232,0.25); border-radius: 4px;
-      width: 38px; height: 38px; cursor: pointer;
-      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-    }
-    .menu-btn span { display: block; width: 18px; height: 1.5px; background: var(--steel); transition: all 0.3s; }
+    .ham { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: 1px solid rgba(200,216,232,.2); border-radius: 6px; padding: 8px; }
+    .ham span { display: block; width: 18px; height: 1.5px; background: var(--steel); border-radius: 2px; transition: var(--t); }
+    .ham.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .ham.open span:nth-child(2) { opacity: 0; }
+    .ham.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── MOBILE MENU ── */
+    .mob { display: none; position: fixed; inset: 0; z-index: 850; background: rgba(26,41,75,.98); backdrop-filter: blur(24px); flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 24px; }
+    .mob.open { display: flex; }
+    .mob a { font-size: 1.2rem; font-weight: 600; color: rgba(255,255,255,.7); padding: 12px 28px; border-radius: 10px; width: 100%; max-width: 280px; text-align: center; transition: all var(--t); }
+    .mob a:hover { color: white; background: rgba(255,255,255,.07); }
+    .mob .m-cta { margin-top: 12px; background: var(--green); color: white !important; border-radius: 8px; }
 
     /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      background: var(--navy);
-      display: grid; grid-template-columns: 1fr 1fr;
-      position: relative; overflow: hidden;
-      padding-top: 72px;
-    }
-    .hero-grid {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(30,111,217,0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30,111,217,0.055) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-    .hero-glow {
-      position: absolute; width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(30,111,217,0.13) 0%, transparent 70%);
-      top: -100px; right: 200px; pointer-events: none;
-    }
-    .hero-glow2 {
-      position: absolute; width: 350px; height: 350px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(10,77,140,0.18) 0%, transparent 70%);
-      bottom: 60px; left: -80px; pointer-events: none;
-    }
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
 
-    .hero-content {
+    /* — Left panel: white with logo — */
+    .hero-l {
+      background: var(--white); display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 4rem 60px 5rem; position: relative;
+    }
+    .hero-l::after {
+      content: ''; position: absolute; top: 8%; right: 0; bottom: 8%; width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--border) 25%, var(--border) 75%, transparent);
+    }
+    .hero-logo-img { width: min(380px, 100%); height: auto; margin-bottom: 2.25rem; }
+    .hero-rule { width: 44px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--navy), var(--green)); margin-bottom: 1.25rem; }
+    .hero-h1 { font-family: var(--font-d); font-size: clamp(1.9rem, 2.5vw, 2.75rem); font-weight: 400; color: var(--navy); line-height: 1.12; margin-bottom: 1rem; letter-spacing: -.2px; }
+    .hero-h1 em { font-style: italic; color: var(--green); }
+    .hero-p { font-size: .95rem; color: var(--muted); line-height: 1.82; margin-bottom: 2rem; max-width: 400px; }
+    .hero-p strong { color: var(--mid); font-weight: 600; }
+
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 8px; font-family: var(--font-b); font-weight: 600; font-size: .88rem; cursor: pointer; transition: all var(--t); border: none; letter-spacing: .15px; text-decoration: none; }
+    .btn-navy { background: var(--navy); color: #fff; box-shadow: 0 4px 14px rgba(26,41,75,.22); }
+    .btn-navy:hover { background: var(--navy-l); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,41,75,.3); }
+    .btn-ghost { background: transparent; color: var(--navy); border: 1.5px solid rgba(26,41,75,.18); }
+    .btn-ghost:hover { border-color: var(--navy); background: rgba(26,41,75,.04); transform: translateY(-1px); }
+
+    .hero-stats { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    .hst { display: flex; flex-direction: column; gap: 3px; }
+    .hst-n { font-family: var(--font-d); font-size: 2rem; font-weight: 600; color: var(--navy); line-height: 1; letter-spacing: -1.5px; }
+    .hst-l { font-family: var(--font-m); font-size: .62rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1.8px; color: var(--light); line-height: 1.4; }
+    .hst-sep { width: 1px; height: 36px; background: var(--border); }
+
+    /* — Right panel: dark with service cards — */
+    .hero-r {
+      background: linear-gradient(150deg, #1a3966 0%, #111D35 55%, #14301f 100%);
       display: flex; flex-direction: column; justify-content: center;
-      padding: 6rem 4rem 6rem 6rem;
-      position: relative; z-index: 2;
+      padding: 88px 3.5rem 60px; position: relative; overflow: hidden;
+    }
+    .hero-r::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(111,191,163,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(111,191,163,.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-r::after {
+      content: ''; position: absolute; top: -80px; right: -60px; width: 360px; height: 360px;
+      border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(111,191,163,.12) 0%, transparent 65%);
     }
     .hero-eyebrow {
-      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-      color: var(--gold); letter-spacing: 3px; text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.75rem;
+      display: inline-flex; align-items: center; gap: 9px; position: relative; z-index: 1;
+      font-family: var(--font-m); font-size: .67rem; font-weight: 500;
+      letter-spacing: 2.8px; text-transform: uppercase; color: var(--teal); margin-bottom: 1.4rem;
     }
-    .hero-eyebrow::before { content: ''; display: inline-block; width: 30px; height: 1px; background: var(--gold); }
-    .status-dot {
-      display: inline-block; width: 7px; height: 7px; border-radius: 50%;
-      background: #22C55E; margin-right: 4px;
-      animation: pulse-dot 2s infinite;
-    }
+    .hero-eyebrow::before { content: ''; width: 20px; height: 2px; background: var(--teal); border-radius: 2px; }
+    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22C55E; animation: pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:.5; transform:scale(.8); } }
 
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 4.5vw, 4.8rem);
-      font-weight: 300; line-height: 1.08;
-      color: white; margin-bottom: 1.5rem;
-    }
-    .hero h1 em { font-style: italic; color: var(--electric); }
-    .hero h1 strong { font-weight: 600; display: block; }
+    .hero-pitch { font-family: var(--font-d); font-size: clamp(1.5rem, 2vw, 2.1rem); font-weight: 300; color: white; line-height: 1.2; margin-bottom: .75rem; position: relative; z-index: 1; }
+    .hero-pitch-s { font-size: .88rem; color: rgba(255,255,255,.52); line-height: 1.78; margin-bottom: 2rem; position: relative; z-index: 1; max-width: 340px; }
 
-    .hero-subtitle {
-      font-size: 16px; font-weight: 300; line-height: 1.75;
-      color: var(--steel); max-width: 490px; margin-bottom: 2.75rem;
-    }
+    .vcards { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+    .vcard { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09); border-radius: var(--r); padding: 16px 18px; display: flex; align-items: center; gap: 14px; cursor: pointer; transition: all var(--t); }
+    .vcard:hover { background: rgba(255,255,255,.1); border-color: rgba(111,191,163,.22); transform: translateX(5px); }
+    .vic { width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0; display: grid; place-items: center; font-size: .95rem; }
+    .vic-m { background: rgba(10,77,140,.4); color: #7BB8F0; border: 1px solid rgba(10,77,140,.3); }
+    .vic-s { background: rgba(65,113,78,.35); color: var(--teal); border: 1px solid rgba(65,113,78,.3); }
+    .vcard-b strong { display: block; font-size: .87rem; font-weight: 600; color: white; margin-bottom: 3px; line-height: 1.3; }
+    .vcard-b span { font-size: .74rem; color: rgba(255,255,255,.45); line-height: 1.4; }
+    .vcard-arr { margin-left: auto; color: rgba(255,255,255,.22); font-size: .75rem; transition: color var(--t); flex-shrink: 0; }
+    .vcard:hover .vcard-arr { color: var(--teal); }
 
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    /* ── TRUST TICKER ── */
+    .strip { background: white; border-bottom: 1px solid var(--border); padding: 13px 0; overflow: hidden; }
+    .strip-track { display: flex; animation: marquee 34s linear infinite; }
+    .strip-track:hover { animation-play-state: paused; }
+    .strip-set { display: flex; flex-shrink: 0; }
+    .si { display: flex; align-items: center; gap: 8px; font-family: var(--font-m); font-size: .72rem; font-weight: 500; color: var(--navy); white-space: nowrap; padding: 0 28px; letter-spacing: .5px; }
+    .si i { color: var(--green); font-size: .7rem; }
+    .ssep { width: 1px; height: 16px; background: var(--border); align-self: center; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .btn-primary {
-      padding: 13px 30px;
-      background: var(--clinical-blue); color: white;
-      font-weight: 500; font-size: 14px; letter-spacing: 0.4px;
-      border: none; border-radius: 4px; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: all 0.25s;
+    /* ── SECTION LABELS ── */
+    .sec-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-m); font-size: .67rem; font-weight: 500;
+      letter-spacing: 2.8px; text-transform: uppercase; color: var(--green); margin-bottom: .85rem;
     }
-    .btn-primary:hover {
-      background: var(--electric); transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(30,111,217,0.4);
-    }
-    .btn-outline {
-      padding: 12px 30px;
-      background: transparent; color: var(--steel);
-      font-weight: 400; font-size: 14px; letter-spacing: 0.4px;
-      border: 1px solid rgba(200,216,232,0.3); border-radius: 4px;
-      cursor: pointer; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: all 0.25s;
-    }
-    .btn-outline:hover { color: white; border-color: rgba(200,216,232,0.7); }
+    .sec-label::before { content: ''; width: 18px; height: 2px; background: currentColor; border-radius: 2px; }
+    .sec-label-lt { color: var(--teal); }
+    .sec-label-cnt { justify-content: center; }
+    .sec-label-cnt::before { display: none; }
+    .sec-label-cnt::after { content: ''; width: 18px; height: 2px; background: currentColor; border-radius: 2px; }
+    .sec-h { font-family: var(--font-d); font-size: clamp(1.9rem, 3vw, 2.8rem); font-weight: 400; color: var(--navy); line-height: 1.12; margin-bottom: .85rem; letter-spacing: -.3px; }
+    .sec-h em { font-style: italic; color: var(--green); }
+    .sec-h-lt { color: white; }
+    .sec-h-lt em { color: var(--teal); }
+    .sec-p { font-size: .95rem; color: var(--muted); line-height: 1.82; max-width: 520px; }
+    .sec-p-lt { color: rgba(255,255,255,.58); }
+    .sec-p-cnt { margin: 0 auto; text-align: center; }
 
-    .hero-stats {
-      display: flex; gap: 2.5rem; margin-top: 3.5rem;
-      padding-top: 2.5rem;
-      border-top: 1px solid rgba(200,216,232,0.12);
-    }
-    .stat-num {
-      font-family: var(--font-display); font-size: 2.2rem; font-weight: 600;
-      color: white; line-height: 1;
-    }
-    .stat-label {
-      font-family: var(--font-mono); font-size: 10px; color: var(--text-light);
-      letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px;
-    }
+    /* ── NOSOTROS ── */
+    #nosotros { padding: 96px 0; background: white; }
+    .nos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .nos-txt p { font-size: .95rem; color: var(--mid); line-height: 1.88; margin-bottom: 14px; }
+    .facts { display: flex; flex-direction: column; gap: 8px; }
+    .fact { display: flex; align-items: flex-start; gap: 13px; background: var(--off); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; transition: all var(--t); }
+    .fact:hover { border-color: rgba(26,41,75,.15); box-shadow: var(--s1); transform: translateX(3px); }
+    .fic { width: 34px; height: 34px; flex-shrink: 0; border-radius: 8px; display: grid; place-items: center; font-size: .82rem; }
+    .fic-n { background: rgba(26,41,75,.08); color: var(--navy); }
+    .fic-g { background: rgba(65,113,78,.1); color: var(--green); }
+    .ftxt strong { display: block; font-size: .84rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .ftxt span { font-size: .78rem; color: var(--muted); line-height: 1.5; }
 
-    /* Hero right — split panels */
-    .hero-panels {
-      display: flex; flex-direction: column;
-      position: relative; z-index: 2;
-    }
-    .hero-panel {
-      flex: 1; padding: 3rem;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      position: relative; overflow: hidden; cursor: pointer;
-      transition: flex 0.45s cubic-bezier(0.4,0,0.2,1);
-    }
-    .hero-panel:hover { flex: 1.35; }
-    .panel-medical {
-      background: linear-gradient(155deg, #0A1A32 0%, #0C3060 100%);
-      border-bottom: 1px solid rgba(200,216,232,0.08);
-    }
-    .panel-security { background: linear-gradient(155deg, #1A294B 0%, #0E2040 100%); }
+    /* ── SERVICES ── */
+    #servicios { padding: 0 0 96px; background: var(--off); }
+    .svc-banner { background: var(--navy); padding: 60px 0 76px; position: relative; overflow: hidden; }
+    .svc-banner::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: 36px 36px; }
+    .svc-hd { max-width: 560px; position: relative; z-index: 1; }
+    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: -44px; }
+    .scard { background: white; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--s2); transition: all var(--t); }
+    .scard:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(0,0,0,.13); border-color: rgba(26,41,75,.1); }
+    .scard-top { padding: 28px 26px 22px; }
+    .sct-navy { background: var(--navy); }
+    .sct-navy h3, .sct-green h3 { color: white; }
+    .sct-navy p { color: rgba(255,255,255,.75); }
+    .sct-green { background: var(--green); }
+    .sct-green p { color: rgba(255,255,255,.78); }
+    .scard-ic { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; font-size: 1.05rem; margin-bottom: 16px; background: rgba(255,255,255,.16); color: white; }
+    .scard-top h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .scard-top p { font-size: .82rem; line-height: 1.72; margin: 0; }
+    .scard-body { padding: 20px 26px; flex-grow: 1; background: white; }
+    .etitle { font-family: var(--font-m); font-size: .62rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--light); margin-bottom: 12px; }
+    .egrid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+    .eitem { display: flex; align-items: center; gap: 7px; font-size: .8rem; color: var(--mid); line-height: 1.4; }
+    .eitem::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--green); flex-shrink: 0; opacity: .75; }
+    .scard-foot { padding: 14px 26px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: white; }
+    .scta { font-size: .82rem; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 6px; transition: all var(--t); }
+    .scard:hover .scta { gap: 12px; color: var(--green); }
+    .stag { font-family: var(--font-m); font-size: .62rem; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+    .st-n { background: rgba(26,41,75,.07); color: var(--navy); }
+    .st-g { background: rgba(65,113,78,.09); color: var(--green); }
 
-    .panel-icon {
-      position: absolute; top: 1.75rem; right: 1.75rem;
-      width: 46px; height: 46px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 19px;
-    }
-    .panel-medical .panel-icon { background: rgba(10,77,140,0.4); border: 1px solid rgba(22,102,184,0.35); }
-    .panel-security .panel-icon { background: rgba(65,113,78,0.25); border: 1px solid rgba(65,113,78,0.38); }
-
-    .panel-tag {
-      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
-      color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.4rem;
-    }
-    .panel-title {
-      font-family: var(--font-display); font-size: 1.45rem; font-weight: 300;
-      color: white; line-height: 1.2; margin-bottom: 0.7rem;
-    }
-    .panel-desc { font-size: 12px; color: rgba(200,216,232,0.55); line-height: 1.55; max-width: 280px; }
-    .panel-link {
-      margin-top: 1.2rem;
-      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-      color: var(--electric); letter-spacing: 0.8px; text-decoration: none;
-      display: flex; align-items: center; gap: 0.5rem; transition: gap 0.2s;
-    }
-    .hero-panel:hover .panel-link { gap: 0.8rem; }
-
-    /* ── TRUST BAR ── */
-    .trust-bar {
-      background: var(--off-white);
-      border-top: 1px solid var(--border-light);
-      border-bottom: 1px solid var(--border-light);
-      padding: 1.4rem 6rem;
-      display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
-    }
-    .trust-label {
-      font-family: var(--font-mono); font-size: 10px; font-weight: 500;
-      color: var(--text-light); letter-spacing: 2px; text-transform: uppercase; white-space: nowrap;
-    }
-    .trust-items { display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 12px; color: var(--text-mid); }
-    .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--clinical-blue); flex-shrink: 0; }
-
-    /* ── SERVICIOS ── */
-    .services { padding: 7rem 6rem; background: var(--white); }
-
-    .section-eyebrow {
-      font-family: var(--font-mono); font-size: 10px; font-weight: 500;
-      color: var(--gold); letter-spacing: 3px; text-transform: uppercase;
-      margin-bottom: 1rem;
-      display: flex; align-items: center; justify-content: center; gap: 1rem;
-    }
-    .section-eyebrow::before, .section-eyebrow::after {
-      content: ''; flex: 1; max-width: 55px; height: 1px; background: var(--gold); opacity: 0.45;
-    }
-    .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-title {
-      font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 400; color: var(--text-dark); line-height: 1.2; margin-bottom: 1rem;
-    }
-    .section-title em { font-style: italic; color: var(--clinical-blue); }
-    .section-subtitle {
-      font-size: 16px; color: var(--text-mid); max-width: 540px;
-      margin: 0 auto; font-weight: 400; line-height: 1.7;
-    }
-
-    .services-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 2px; background: var(--border-light);
-      border: 1px solid var(--border-light); border-radius: 2px; overflow: hidden;
-    }
-    .service-card {
-      background: var(--white); padding: 2.75rem;
-      display: flex; flex-direction: column;
-      position: relative; overflow: hidden; transition: background 0.3s;
-    }
-    .service-card:hover { background: var(--off-white); }
-    .service-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--clinical-blue), var(--electric));
-      transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease;
-    }
-    .service-card:hover::before { transform: scaleX(1); }
-
-    .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.5rem; }
-    .card-num { font-family: var(--font-mono); font-size: 11px; color: var(--text-light); letter-spacing: 1px; }
-    .card-icon {
-      width: 44px; height: 44px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; font-size: 19px;
-    }
-    .icon-medical { background: var(--ice); border: 1px solid rgba(10,77,140,0.12); }
-    .icon-security { background: rgba(65,113,78,0.1); border: 1px solid rgba(65,113,78,0.22); }
-    .icon-network { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); }
-
-    .card-category {
-      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.5rem;
-    }
-    .card-title {
-      font-family: var(--font-display); font-size: 1.45rem; font-weight: 400;
-      color: var(--text-dark); line-height: 1.2; margin-bottom: 0.9rem;
-    }
-    .card-desc { font-size: 13.5px; color: var(--text-mid); line-height: 1.7; font-weight: 400; flex: 1; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
-    .tag {
-      font-family: var(--font-mono); font-size: 10px; padding: 3px 10px;
-      border: 1px solid var(--border-light); border-radius: 2px;
-      color: var(--text-light); white-space: nowrap;
-    }
-    .card-arrow {
-      margin-top: 2rem; display: flex; align-items: center; gap: 0.5rem;
-      font-family: var(--font-mono); font-size: 11px; color: var(--clinical-blue);
-      font-weight: 500; letter-spacing: 0.5px; cursor: pointer;
-      background: none; border: none; padding: 0; transition: gap 0.2s;
-    }
-    .service-card:hover .card-arrow { gap: 0.8rem; }
-
-    /* ── WHY US ── */
-    .whyus {
-      background: var(--navy); padding: 7rem 6rem;
-      position: relative; overflow: hidden;
-    }
-    .whyus-bg {
-      position: absolute; inset: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(30,111,217,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(30,111,217,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-    .whyus .section-title { color: white; }
-    .whyus .section-title em { color: var(--electric); }
-    .whyus .section-subtitle { color: var(--steel); }
-
-    .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; position: relative; z-index: 1; }
-    .pillar {
-      padding: 2rem 1.75rem;
-      border: 1px solid rgba(200,216,232,0.1); border-radius: 2px;
-      background: rgba(255,255,255,0.02); transition: all 0.3s; position: relative; overflow: hidden;
-    }
-    .pillar:hover { border-color: rgba(30,111,217,0.3); background: rgba(30,111,217,0.04); transform: translateY(-3px); }
-    .pillar::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--clinical-blue), var(--electric));
-      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
-    }
-    .pillar:hover::after { transform: scaleX(1); }
-    .pillar-icon { font-size: 1.75rem; margin-bottom: 1.2rem; display: block; }
-    .pillar-title { font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 0.7rem; }
-    .pillar-desc { font-size: 13px; color: rgba(200,216,232,0.6); line-height: 1.6; font-weight: 400; }
+    /* ── DIFERENCIADORES ── */
+    #dif { padding: 96px 0; background: white; }
+    .dif-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--border); border-radius: 14px; overflow: hidden; margin-top: 44px; }
+    .dcell { background: white; padding: 28px 24px; transition: all var(--t); position: relative; overflow: hidden; }
+    .dcell::after { content: ''; position: absolute; bottom: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--navy), var(--green)); transition: width .4s var(--ease); }
+    .dcell:hover { background: #f4f7ff; }
+    .dcell:hover::after { width: 100%; }
+    .dnum { font-family: var(--font-d); font-size: 2rem; font-weight: 600; color: var(--border); line-height: 1; margin-bottom: 10px; transition: color var(--t); }
+    .dcell:hover .dnum { color: rgba(26,41,75,.18); }
+    .dcell-ic { font-size: 1.4rem; margin-bottom: 8px; }
+    .dcell h4 { font-size: .93rem; font-weight: 700; color: var(--navy); margin-bottom: 7px; }
+    .dcell p { font-size: .81rem; color: var(--muted); line-height: 1.72; }
 
     /* ── DUAL BRAND ── */
     .dual-brand { display: grid; grid-template-columns: 1fr 1fr; }
-    .brand-medical {
-      background: var(--white); padding: 6rem;
-      display: flex; flex-direction: column; justify-content: center;
-      border-right: 1px solid var(--border-light);
-      position: relative; overflow: hidden;
-    }
-    .brand-medical::before {
-      content: 'CLINICAL'; position: absolute;
-      font-family: var(--font-display); font-size: 9rem; font-weight: 600;
-      color: rgba(10,77,140,0.04); top: 50%; right: -1rem;
-      transform: translateY(-50%); white-space: nowrap; pointer-events: none; z-index: 0;
-    }
-    .brand-security {
-      background: var(--navy-mid); padding: 6rem;
-      display: flex; flex-direction: column; justify-content: center;
-      position: relative; overflow: hidden;
-    }
-    .brand-security::before {
-      content: 'SECURE'; position: absolute;
-      font-family: var(--font-display); font-size: 9rem; font-weight: 600;
-      color: rgba(65,113,78,0.07); top: 50%; right: -1rem;
-      transform: translateY(-50%); white-space: nowrap; pointer-events: none; z-index: 0;
-    }
+    .brand-half { padding: 6rem 5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .bh-light { background: white; border-right: 1px solid var(--border); }
+    .bh-dark  { background: var(--navy); }
+    .bh-light::before { content: 'MÉDICO'; position: absolute; font-family: var(--font-d); font-size: 8rem; font-weight: 600; color: rgba(26,41,75,.04); top: 50%; right: -1rem; transform: translateY(-50%); white-space: nowrap; pointer-events: none; }
+    .bh-dark::before  { content: 'SECURE'; position: absolute; font-family: var(--font-d); font-size: 8rem; font-weight: 600; color: rgba(65,113,78,.08); top: 50%; right: -1rem; transform: translateY(-50%); white-space: nowrap; pointer-events: none; }
     .brand-inner { position: relative; z-index: 1; }
-
-    .brand-label {
-      font-family: var(--font-mono); font-size: 10px; font-weight: 500;
-      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 1.4rem;
-      display: flex; align-items: center; gap: 0.7rem;
-    }
-    .brand-medical .brand-label { color: var(--clinical-blue); }
-    .brand-security .brand-label { color: var(--brand-green); }
-    .brand-dot { width: 8px; height: 8px; border-radius: 50%; }
-    .brand-medical .brand-dot { background: var(--clinical-blue); }
-    .brand-security .brand-dot { background: var(--brand-green); }
-
-    .brand-title { font-family: var(--font-display); font-size: 2.3rem; font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem; }
-    .brand-medical .brand-title { color: var(--text-dark); }
-    .brand-security .brand-title { color: white; }
-    .brand-medical .brand-title em { color: var(--clinical-blue); }
-    .brand-security .brand-title em { color: #5B9FE8; }
-
-    .brand-desc { font-size: 14px; line-height: 1.75; font-weight: 400; margin-bottom: 1.75rem; }
-    .brand-medical .brand-desc { color: var(--text-mid); }
-    .brand-security .brand-desc { color: var(--steel); }
-
-    .brand-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2.25rem; }
-    .brand-list li { font-size: 13px; display: flex; align-items: center; gap: 0.6rem; }
-    .brand-medical .brand-list li { color: var(--text-mid); }
-    .brand-security .brand-list li { color: var(--steel); }
-    .brand-list li::before { content: '→'; font-family: var(--font-mono); font-size: 11px; flex-shrink: 0; }
-    .brand-medical .brand-list li::before { color: var(--clinical-blue); }
-    .brand-security .brand-list li::before { color: var(--electric); }
-
-    .btn-medical {
-      padding: 12px 26px; background: var(--clinical-blue); color: white;
-      font-weight: 500; font-size: 13px; letter-spacing: 0.4px;
-      border: none; border-radius: 4px; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: all 0.25s; width: fit-content;
-    }
-    .btn-medical:hover { background: var(--clinical-mid); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,77,140,0.3); }
-    .btn-security {
-      padding: 12px 26px; background: var(--electric); color: white;
-      font-weight: 500; font-size: 13px; letter-spacing: 0.4px;
-      border: none; border-radius: 4px; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
-      transition: all 0.25s; width: fit-content;
-    }
-    .btn-security:hover { background: #2680F0; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(30,111,217,0.4); }
+    .brand-lbl { display: flex; align-items: center; gap: .7rem; font-family: var(--font-m); font-size: .67rem; font-weight: 500; letter-spacing: 2.8px; text-transform: uppercase; margin-bottom: 1.4rem; }
+    .brand-lbl-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .bh-light .brand-lbl { color: var(--navy); }
+    .bh-light .brand-lbl-dot { background: var(--navy); }
+    .bh-dark  .brand-lbl { color: var(--green); }
+    .bh-dark  .brand-lbl-dot { background: var(--green); }
+    .brand-h { font-family: var(--font-d); font-size: 2.2rem; font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem; }
+    .bh-light .brand-h { color: var(--text); }
+    .bh-light .brand-h em { font-style: italic; color: var(--navy); }
+    .bh-dark  .brand-h { color: white; }
+    .bh-dark  .brand-h em { font-style: italic; color: var(--teal); }
+    .brand-p { font-size: .92rem; line-height: 1.78; margin-bottom: 1.75rem; }
+    .bh-light .brand-p { color: var(--mid); }
+    .bh-dark  .brand-p { color: rgba(200,216,232,.72); }
+    .brand-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; margin-bottom: 2rem; }
+    .brand-list li { font-size: .88rem; display: flex; align-items: flex-start; gap: .6rem; line-height: 1.5; }
+    .bh-light .brand-list li { color: var(--mid); }
+    .bh-dark  .brand-list li { color: rgba(200,216,232,.8); }
+    .brand-list li::before { content: '→'; font-family: var(--font-m); font-size: .75rem; margin-top: 1px; flex-shrink: 0; }
+    .bh-light .brand-list li::before { color: var(--navy); }
+    .bh-dark  .brand-list li::before { color: var(--teal); }
+    .brand-btn { display: inline-flex; align-items: center; gap: .5rem; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: .88rem; border: none; cursor: pointer; text-decoration: none; transition: all var(--t); width: fit-content; }
+    .bb-navy  { background: var(--navy); color: white; box-shadow: 0 4px 14px rgba(26,41,75,.22); }
+    .bb-navy:hover  { background: var(--navy-l); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(26,41,75,.3); }
+    .bb-green { background: var(--green); color: white; box-shadow: 0 4px 14px rgba(65,113,78,.22); }
+    .bb-green:hover { background: var(--green-l); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(65,113,78,.3); }
 
     /* ── COVERAGE ── */
-    .coverage {
-      background: var(--off-white); padding: 5rem 6rem;
-      border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);
-    }
-    .coverage-inner { display: flex; align-items: center; justify-content: space-between; gap: 4rem; }
-    .coverage-text { flex: 1; }
-    .coverage-title { font-family: var(--font-display); font-size: 2rem; font-weight: 400; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.2; }
-    .coverage-desc { font-size: 14px; color: var(--text-mid); line-height: 1.7; font-weight: 400; max-width: 420px; margin-bottom: 2rem; }
-    .zones { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .zone {
-      padding: 6px 14px; background: white; border: 1px solid var(--border-light);
-      border-radius: 2px; font-size: 12px; color: var(--text-mid);
-      font-family: var(--font-mono); letter-spacing: 0.5px;
-    }
+    #cobertura { padding: 96px 0; background: var(--navy); position: relative; overflow: hidden; }
+    #cobertura::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+    .cob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; position: relative; z-index: 1; }
+    .cob-cards { display: flex; flex-direction: column; gap: 8px; }
+    .cobcard { background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); border-radius: 11px; padding: 16px 18px; display: flex; align-items: center; gap: 14px; transition: all var(--t); }
+    .cobcard:hover { background: rgba(255,255,255,.09); transform: translateX(4px); }
+    .cico { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; font-size: .85rem; flex-shrink: 0; }
+    .cico-g { background: rgba(65,113,78,.25); color: var(--teal); }
+    .cico-n { background: rgba(255,255,255,.08); color: rgba(255,255,255,.75); }
+    .cobcard strong { display: block; font-size: .87rem; font-weight: 700; color: white; margin-bottom: 2px; }
+    .cobcard span { font-size: .76rem; color: rgba(255,255,255,.48); }
+    .met-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,.06); border-radius: 12px; overflow: hidden; margin-top: 1.5rem; }
+    .met { background: rgba(255,255,255,.055); padding: 1.75rem; }
+    .met-n { font-family: var(--font-d); font-size: 2.4rem; font-weight: 600; color: white; line-height: 1; margin-bottom: .3rem; }
+    .met-n span { color: var(--teal); }
+    .met-l { font-family: var(--font-m); font-size: .65rem; color: rgba(255,255,255,.4); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1.5; }
+    .zones { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .zone { padding: 5px 13px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 6px; font-family: var(--font-m); font-size: .7rem; color: rgba(255,255,255,.62); white-space: nowrap; }
 
-    .metrics {
-      flex: 1; max-width: 460px;
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1px; background: var(--border-light);
-      border: 1px solid var(--border-light); border-radius: 2px; overflow: hidden;
-    }
-    .metric { background: white; padding: 2rem; }
-    .metric-num {
-      font-family: var(--font-display); font-size: 2.4rem; font-weight: 600;
-      color: var(--text-dark); line-height: 1; margin-bottom: 0.3rem;
-    }
-    .metric-num span { color: var(--clinical-blue); }
-    .metric-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-light); letter-spacing: 1.5px; text-transform: uppercase; }
+    /* ── CLIENTS ── */
+    #clientes { background: white; padding: 96px 0; }
+    .cli-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 3rem; }
+    .clicard { background: var(--off); border: 1px solid var(--border); border-radius: var(--r); padding: 22px; display: flex; flex-direction: column; gap: 12px; transition: all var(--t); }
+    .clicard:hover { background: white; box-shadow: var(--s2); border-color: rgba(26,41,75,.1); transform: translateY(-3px); }
+    .clicard-top { display: flex; align-items: center; gap: 12px; }
+    .cli-mark { width: 42px; height: 42px; border-radius: 8px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-m); font-size: 11px; font-weight: 500; letter-spacing: -.5px; color: white; }
+    .cm-blue  { background: linear-gradient(135deg, #0A4D8C, #1E6FD9); }
+    .cm-teal  { background: linear-gradient(135deg, #0A6E6E, #0D9A9A); }
+    .cm-slate { background: linear-gradient(135deg, #2D4A6B, #3D6491); }
+    .cm-ind   { background: linear-gradient(135deg, #3730A3, #4F46E5); }
+    .cm-gold  { background: linear-gradient(135deg, #92680A, #C9A84C); }
+    .cm-dark  { background: linear-gradient(135deg, #1F2937, #374151); }
+    .cli-sector { font-family: var(--font-m); font-size: .62rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--light); }
+    .cli-name   { font-size: .88rem; font-weight: 700; color: var(--text); line-height: 1.25; margin-top: 2px; }
+    .cli-svc    { font-size: .8rem; color: var(--muted); font-weight: 400; line-height: 1.58; }
+    .cli-tag    { font-family: var(--font-m); font-size: .62rem; padding: 3px 10px; border: 1px solid var(--border); border-radius: 20px; color: var(--light); width: fit-content; }
 
-    /* ── CLIENTES ── */
-    .clientes {
-      background: var(--white); padding: 6rem 6rem;
-      border-top: 1px solid var(--border-light);
-    }
-    .clientes-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 2px; background: var(--border-light);
-      border: 1px solid var(--border-light); border-radius: 2px; overflow: hidden;
-      margin-top: 3.5rem;
-    }
-    .cliente-card {
-      background: var(--white); padding: 2rem 2.25rem;
-      display: flex; flex-direction: column; gap: 1.25rem;
-      transition: background 0.25s;
-    }
-    .cliente-card:hover { background: var(--off-white); }
-    .cliente-card-top { display: flex; align-items: center; gap: 1rem; }
-    .cliente-logo-mark {
-      width: 42px; height: 42px; border-radius: 6px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-      letter-spacing: -0.5px; color: white;
-    }
-    .cliente-logo-mark.lm-blue  { background: linear-gradient(135deg, #0A4D8C, #1E6FD9); }
-    .cliente-logo-mark.lm-teal  { background: linear-gradient(135deg, #0A6E6E, #0D9A9A); }
-    .cliente-logo-mark.lm-slate { background: linear-gradient(135deg, #2D4A6B, #3D6491); }
-    .cliente-logo-mark.lm-indigo{ background: linear-gradient(135deg, #3730A3, #4F46E5); }
-    .cliente-logo-mark.lm-gold  { background: linear-gradient(135deg, #92680A, #C9A84C); }
-    .cliente-logo-mark.lm-dark  { background: linear-gradient(135deg, #1F2937, #374151); }
-    .cliente-info {}
-    .cliente-sector {
-      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--text-light);
-    }
-    .cliente-nombre {
-      font-size: 14px; font-weight: 600; color: var(--text-dark); line-height: 1.2; margin-top: 1px;
-    }
-    .cliente-servicio {
-      font-size: 12.5px; color: var(--text-mid); font-weight: 400; line-height: 1.55;
-    }
-    .cliente-tag {
-      font-family: var(--font-mono); font-size: 9px; padding: 3px 9px;
-      border: 1px solid var(--border-light); border-radius: 2px;
-      color: var(--text-light); white-space: nowrap; width: fit-content;
-    }
-
-    @media (max-width: 1100px) {
-      .clientes { padding: 5rem 2rem; }
-      .clientes-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .clientes-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ── CONTACTO ── */
-    .contacto {
-      background: linear-gradient(135deg, var(--clinical-blue) 0%, var(--navy) 100%);
-      padding: 7rem 6rem; position: relative; overflow: hidden;
-    }
-    .contacto::before {
-      content: ''; position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 48px 48px;
-    }
-    .contacto-inner {
-      position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
-      max-width: 1100px; margin: 0 auto;
-    }
-    .contacto-info {}
-    .contacto-info h2 {
-      font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.8rem);
-      font-weight: 300; color: white; margin-bottom: 1rem; line-height: 1.2;
-    }
-    .contacto-info p {
-      font-size: 15px; color: rgba(232,242,255,0.72);
-      font-weight: 400; line-height: 1.7; margin-bottom: 2.5rem; max-width: 400px;
-    }
-    .contacto-links { display: flex; flex-direction: column; gap: 1rem; }
-    .contacto-link {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 13px; color: rgba(232,242,255,0.65); text-decoration: none;
-      transition: color 0.2s;
-    }
-    .contacto-link:hover { color: white; }
-    .contacto-link-icon {
-      width: 36px; height: 36px; border-radius: 6px; flex-shrink: 0;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-      display: flex; align-items: center; justify-content: center; font-size: 15px;
-    }
-    .contacto-link-text { display: flex; flex-direction: column; }
-    .contacto-link-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1px; }
-    .contacto-link-val { font-size: 13px; color: rgba(232,242,255,0.8); }
-
-    /* Formulario */
-    .contact-form {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 4px; padding: 2.5rem;
-    }
-    .contact-form-title {
-      font-family: var(--font-mono); font-size: 10px; font-weight: 500;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1.75rem;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
-    .form-group:last-of-type { margin-bottom: 0; }
-    .form-label {
-      font-family: var(--font-mono); font-size: 9px; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase; color: rgba(200,216,232,0.55);
-    }
-    .form-input, .form-select, .form-textarea {
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(200,216,232,0.15);
-      border-radius: 3px; padding: 10px 14px;
-      font-family: var(--font-body); font-size: 13.5px; font-weight: 400;
-      color: white; outline: none; transition: border-color 0.2s, background 0.2s;
-      width: 100%;
-    }
-    .form-input::placeholder, .form-textarea::placeholder { color: rgba(200,216,232,0.3); }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: rgba(30,111,217,0.6); background: rgba(30,111,217,0.06);
-    }
-    .form-select { appearance: none; cursor: pointer; }
-    .form-select option { background: var(--navy); color: white; }
-    .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
-    .form-submit {
-      margin-top: 1.5rem; width: 100%; padding: 13px;
-      background: var(--electric); color: white;
-      font-family: var(--font-body); font-size: 14px; font-weight: 500;
-      border: none; border-radius: 3px; cursor: pointer;
-      transition: background 0.25s, transform 0.2s;
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    }
-    .form-submit:hover { background: #2680F0; transform: translateY(-1px); }
-    .form-submit:active { transform: translateY(0); }
-    .form-success {
-      display: none; text-align: center; padding: 2rem 0;
-    }
-    .form-success-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
-    .form-success h4 {
-      font-family: var(--font-display); font-size: 1.4rem; font-weight: 400;
-      color: white; margin-bottom: 0.5rem;
-    }
-    .form-success p { font-size: 13.5px; color: rgba(200,216,232,0.65); font-weight: 400; }
-    .form-error {
-      display: none; margin-top: 1rem; padding: 10px 14px;
-      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
-      border-radius: 3px; font-size: 13px; color: rgba(255,180,180,0.9);
-      font-weight: 400; line-height: 1.5;
-    }
-
-    @media (max-width: 1100px) {
-      .contacto { padding: 5rem 2rem; }
-      .contacto-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .form-row { grid-template-columns: 1fr; }
-    }
+    /* ── CONTACT ── */
+    #contacto { padding: 96px 0; background: var(--off); }
+    .contact-hd { text-align: center; margin-bottom: 3rem; }
+    .cwrap { display: grid; grid-template-columns: 5fr 6fr; background: white; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: var(--s3); max-width: 1000px; margin: 0 auto; }
+    .c-l { background: var(--navy); padding: 50px 42px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .c-l::before { content: ''; position: absolute; bottom: -60px; right: -40px; width: 220px; height: 220px; border-radius: 50%; background: radial-gradient(circle, rgba(111,191,163,.12) 0%, transparent 70%); pointer-events: none; }
+    .c-l h2 { font-family: var(--font-d); font-size: 1.9rem; font-weight: 400; color: white; line-height: 1.15; margin-bottom: .75rem; position: relative; z-index: 1; }
+    .c-l h2 em { font-style: italic; color: var(--teal); }
+    .c-l > p { font-size: .88rem; color: rgba(255,255,255,.52); line-height: 1.82; margin-bottom: 2rem; position: relative; z-index: 1; max-width: 300px; }
+    .crows { display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; flex: 1; }
+    .crow { display: flex; align-items: center; gap: 12px; font-size: .87rem; color: rgba(255,255,255,.78); }
+    .crow-ic { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.08); display: grid; place-items: center; flex-shrink: 0; }
+    .crow-ic i { color: var(--teal); font-size: .82rem; }
+    .crow a { transition: color var(--t); }
+    .crow a:hover { color: var(--teal); }
+    .crow-lbl { display: flex; flex-direction: column; }
+    .crow-lbl small { font-family: var(--font-m); font-size: .6rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 1px; }
+    .cdvd { border: none; border-top: 1px solid rgba(255,255,255,.08); margin: 20px 0; position: relative; z-index: 1; }
+    .cnote { font-size: .75rem; color: rgba(255,255,255,.28); line-height: 1.72; position: relative; z-index: 1; }
+    .c-r { padding: 50px 42px; }
+    .fgrp { margin-bottom: 14px; }
+    .fgrp label { display: block; font-family: var(--font-m); font-size: .65rem; font-weight: 500; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+    .fc { width: 100%; background: var(--off); border: 1.5px solid var(--border); color: var(--text); font-family: var(--font-b); font-size: .9rem; padding: 11px 14px; border-radius: 8px; transition: all var(--t); outline: none; }
+    .fc::placeholder { color: var(--light); }
+    .fc:focus { border-color: var(--navy); background: white; box-shadow: 0 0 0 4px rgba(26,41,75,.08); }
+    textarea.fc { resize: vertical; min-height: 96px; }
+    select.fc option { background: white; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-form { background: var(--navy); color: white; font-size: .9rem; font-weight: 700; box-shadow: 0 4px 14px rgba(26,41,75,.22); width: 100%; justify-content: center; padding: 13px 24px; margin-top: 6px; border-radius: 8px; display: flex; align-items: center; gap: 8px; transition: all var(--t); border: none; cursor: pointer; font-family: var(--font-b); }
+    .btn-form:hover { background: var(--navy-l); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,41,75,.3); }
+    .btn-form:disabled { opacity: .7; cursor: not-allowed; transform: none; }
+    .form-success { display: none; text-align: center; padding: 2.5rem 0; }
+    .form-success i { font-size: 2.5rem; color: var(--green); margin-bottom: .75rem; display: block; }
+    .form-success h4 { font-family: var(--font-d); font-size: 1.4rem; font-weight: 400; color: var(--navy); margin-bottom: .5rem; }
+    .form-success p { font-size: .88rem; color: var(--muted); }
+    .form-error { display: none; margin-top: 12px; padding: 10px 14px; background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25); border-radius: 8px; font-size: .84rem; color: #dc2626; line-height: 1.55; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--navy); color: var(--steel); padding: 5rem 6rem 2.5rem;
-      border-top: 1px solid rgba(200,216,232,0.08);
-    }
-    .footer-grid {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem;
-      padding-bottom: 4rem; border-bottom: 1px solid rgba(200,216,232,0.08);
-      margin-bottom: 2rem;
-    }
-    .footer-desc { font-size: 13px; font-weight: 400; line-height: 1.7; color: rgba(200,216,232,0.55); margin-top: 1rem; max-width: 250px; }
-    .footer-rut { font-family: var(--font-mono); font-size: 10px; color: rgba(200,216,232,0.3); margin-top: 1rem; letter-spacing: 0.5px; }
-    .footer-col-title { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-    .footer-links a { font-size: 13px; color: rgba(200,216,232,0.55); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: white; }
-    .footer-bottom {
-      display: flex; align-items: center; justify-content: space-between;
-      font-family: var(--font-mono); font-size: 10px; color: rgba(200,216,232,0.3); letter-spacing: 0.5px;
-    }
-    .footer-legal { display: flex; gap: 1.5rem; }
-    .footer-legal a { color: rgba(200,216,232,0.3); text-decoration: none; transition: color 0.2s; }
-    .footer-legal a:hover { color: rgba(200,216,232,0.7); }
+    footer { background: var(--navy-d); padding: 2.5rem 0; border-top: 1px solid rgba(200,216,232,.06); }
+    .foot-in { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .foot-logo-wrap { display: flex; align-items: center; gap: .75rem; }
+    .foot-logo { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: .85; }
+    .foot-copy { font-family: var(--font-m); font-size: .7rem; color: rgba(255,255,255,.28); }
+    .foot-rut  { font-family: var(--font-m); font-size: .68rem; color: rgba(255,255,255,.18); margin-top: 4px; }
+    .foot-links { display: flex; gap: 20px; }
+    .foot-links a { font-family: var(--font-m); font-size: .7rem; color: rgba(255,255,255,.32); transition: color var(--t); display: flex; align-items: center; gap: 5px; }
+    .foot-links a:hover { color: var(--teal); }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulse-dot { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
-    .a1 { animation: fadeUp 0.6s ease 0.1s both; }
-    .a2 { animation: fadeUp 0.6s ease 0.25s both; }
-    .a3 { animation: fadeUp 0.6s ease 0.4s both; }
-    .a4 { animation: fadeUp 0.6s ease 0.55s both; }
-    .a5 { animation: fadeUp 0.6s ease 0.7s both; }
-
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
+    /* ── FLOATING WHATSAPP ── */
+    #wa-btn { position: fixed; bottom: 28px; right: 28px; z-index: 800; width: 56px; height: 56px; border-radius: 50%; background: #25d366; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.45rem; box-shadow: 0 4px 20px rgba(37,211,102,.4); transition: all var(--t); text-decoration: none; }
+    #wa-btn:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.5); }
+    #wa-btn::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #25d366; animation: pulse-wa 2.5s ease infinite; z-index: -1; }
+    @keyframes pulse-wa { 0% { transform: scale(1); opacity: .7; } 70% { transform: scale(1.65); opacity: 0; } 100% { transform: scale(1.65); opacity: 0; } }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
-      .nav { padding: 0 2rem; }
-      .nav-links { display: none; }
-      .menu-btn { display: flex; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-content { padding: 5rem 2rem 3rem; }
-      .hero-panels { height: 360px; flex-direction: row; }
-      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
-      .trust-bar { padding: 1.5rem 2rem; flex-direction: column; align-items: flex-start; }
-      .services { padding: 5rem 2rem; }
-      .services-grid { grid-template-columns: 1fr; }
-      .pillars { grid-template-columns: repeat(2, 1fr); }
-      .whyus { padding: 5rem 2rem; }
+      .nav-links { display: none; } .ham { display: flex; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-l { padding: 100px 2rem 3rem; }
+      .hero-r { display: none; }
+      .nos-grid { grid-template-columns: 1fr; gap: 36px; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .dif-grid { grid-template-columns: 1fr 1fr; }
       .dual-brand { grid-template-columns: 1fr; }
-      .brand-medical, .brand-security { padding: 4rem 2rem; }
-      .brand-medical::before, .brand-security::before { font-size: 5rem; }
-      .coverage { padding: 4rem 2rem; }
-      .coverage-inner { flex-direction: column; }
-      .metrics { max-width: 100%; }
-      .cta-banner { padding: 4rem 2rem; }
-      footer { padding: 4rem 2rem 2rem; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .brand-half { padding: 4rem 2rem; }
+      .bh-light::before, .bh-dark::before { font-size: 5rem; }
+      .cob-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cli-grid { grid-template-columns: 1fr 1fr; }
+      .cwrap { grid-template-columns: 1fr; }
+      .c-l, .c-r { padding: 36px 28px; }
+      #nosotros, #servicios, #dif, #cobertura, #clientes, #contacto { padding: 64px 0; }
+      #servicios { padding-top: 0; }
+      footer { padding: 2rem 0; }
     }
     @media (max-width: 600px) {
-      .hero h1 { font-size: 2.4rem; }
-      .hero-panels { flex-direction: column; height: auto; }
-      .hero-panel { min-height: 160px; }
-      .pillars { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .hero-logo-img { max-width: 260px; }
+      .hero-h1 { font-size: 1.75rem; }
+      .dif-grid { grid-template-columns: 1fr; }
+      .cli-grid { grid-template-columns: 1fr; }
+      .frow { grid-template-columns: 1fr; }
+      .foot-in { flex-direction: column; text-align: center; }
+      .foot-links { flex-wrap: wrap; justify-content: center; }
+      #wa-btn { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 1.25rem; }
     }
 
-    /* ── MOBILE MENU ── */
-    .mobile-menu {
-      display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
-      background: rgba(26,41,75,0.99); padding: 1.5rem 2rem;
-      border-bottom: 1px solid rgba(200,216,232,0.1);
-      flex-direction: column; gap: 0;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      padding: 0.9rem 0; font-size: 14px; color: var(--steel); text-decoration: none;
-      border-bottom: 1px solid rgba(200,216,232,0.07); display: block;
-      transition: color 0.2s;
-    }
-    .mobile-menu a:hover { color: white; }
-    .mobile-menu a:last-child { border-bottom: none; }
-    .mobile-menu .m-cta {
-      margin-top: 0.75rem; padding: 0.9rem 1.5rem; text-align: center;
-      background: var(--clinical-blue); border-radius: 4px; color: white !important;
-      font-weight: 500; border: none;
-    }
+    /* Scroll margin for fixed header offset */
+    section[id], div[id] { scroll-margin-top: 72px; }
   </style>
 </head>
 <body>
 
+<!-- Scroll progress bar -->
+<div id="prog"></div>
+
 <!-- ── NAVBAR ── -->
-<nav class="nav" id="navbar">
-  <a href="#inicio" class="nav-logo">
-    <div class="nav-logo-mark" style="overflow:hidden; padding:0;">
-      <img src="logo.svg" alt="" aria-hidden="true" style="height:70px; width:auto; display:block; margin-top:-8px; margin-left:-41px;" />
-    </div>
-    <div>
-      <span class="nav-logo-name">Omnitrionix</span>
-      <span class="nav-logo-tagline">Ingeniería · SpA</span>
-    </div>
-  </a>
+<header id="hdr">
+  <div class="container">
+    <div class="hdr-in">
+      <a href="#hero" class="nav-logo" aria-label="Omnitrionix SpA — inicio">
+        <div class="nav-logo-mark">
+          <img src="logo.svg" alt="" aria-hidden="true" />
+        </div>
+        <div>
+          <span class="nav-name">Omnitrionix</span>
+          <span class="nav-tag">Ingeniería · SpA</span>
+        </div>
+      </a>
 
-  <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#ingenieria-clinica">Ing. Clínica</a></li>
-    <li><a href="#seguridad">Seguridad</a></li>
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#contacto" class="nav-cta">Solicitar Cotización</a></li>
-  </ul>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#ingenieria-clinica">Ing. Clínica</a></li>
+        <li><a href="#seguridad">Seguridad</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto" class="nav-cta">Solicitar Cotización</a></li>
+      </ul>
 
-  <button class="menu-btn" id="menuBtn" aria-label="Menú" aria-expanded="false" aria-controls="mobileMenu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+      <button class="ham" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
 
 <!-- Mobile menu -->
-<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menú móvil">
+<nav class="mob" id="mobileMenu" aria-label="Menú móvil">
   <a href="#servicios">Servicios</a>
   <a href="#ingenieria-clinica">Ingeniería Clínica</a>
   <a href="#seguridad">Seguridad Electrónica</a>
   <a href="#nosotros">Nosotros</a>
   <a href="#contacto" class="m-cta">Solicitar Cotización</a>
-</div>
+</nav>
 
 <!-- ── HERO ── -->
-<section class="hero" id="inicio">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
+<section id="hero">
 
-  <div class="hero-content">
-    <div class="hero-eyebrow a1">
-      <span class="status-dot"></span>
-      Gran Concepción, Región del Biobío
-    </div>
-
-    <h1 class="a2">
-      Donde la <em>Ingeniería</em><br>
-      <strong>no admite margen<br>de error.</strong>
+  <!-- Left: white panel with logo -->
+  <div class="hero-l">
+    <img src="logo.svg" alt="Omnitrionix SpA" class="hero-logo-img rv" />
+    <div class="hero-rule rv d1"></div>
+    <h1 class="hero-h1 rv d1">
+      Donde la ingeniería<br>
+      no admite <em>margen<br>de error.</em>
     </h1>
-
-    <p class="hero-subtitle a3">
-      Especialistas en Ingeniería Clínica Biomédica y Sistemas de Seguridad
-      Electrónica para la industria y el sector salud. Precisión técnica.
-      Respuesta oportuna. Respaldo documentado.
+    <p class="hero-p rv d2">
+      Especialistas en <strong>Equipos Médicos e Ingeniería Clínica</strong> y
+      <strong>Seguridad Electrónica</strong> para la industria y el sector salud.
+      Precisión técnica, respuesta oportuna, respaldo documentado.
     </p>
-
-    <div class="hero-btns a4">
-      <a href="#servicios" class="btn-primary">Ver nuestros servicios →</a>
-      <a href="#contacto" class="btn-outline">Solicitar diagnóstico</a>
+    <div class="btn-row rv d3">
+      <a href="#servicios" class="btn btn-navy">Ver nuestros servicios &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#contacto"  class="btn btn-ghost">Solicitar diagnóstico</a>
     </div>
-
-    <div class="hero-stats a5">
-      <div>
-        <div class="stat-num">2</div>
-        <div class="stat-label">Áreas de<br>Especialización</div>
+    <div class="hero-stats rv d4">
+      <div class="hst">
+        <span class="hst-n">2</span>
+        <span class="hst-l">Áreas de<br>Especialización</span>
       </div>
-      <div>
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Soporte<br>Técnico</div>
+      <div class="hst-sep"></div>
+      <div class="hst">
+        <span class="hst-n">24/7</span>
+        <span class="hst-l">Soporte<br>Técnico</span>
       </div>
-      <div>
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Respaldo<br>Documentado</div>
+      <div class="hst-sep"></div>
+      <div class="hst">
+        <span class="hst-n">100%</span>
+        <span class="hst-l">Respaldo<br>Documentado</span>
       </div>
     </div>
   </div>
 
-  <!-- Right panels -->
-  <div class="hero-panels">
-    <div class="hero-panel panel-medical" onclick="window.location.href='#ingenieria-clinica'">
-      <div class="panel-icon">⚕️</div>
-      <div>
-        <div class="panel-tag">División Médica</div>
-        <div class="panel-title">Ingeniería<br>Clínica y Biomédica</div>
-        <p class="panel-desc">Mantenimiento de equipamiento de alta complejidad. Especialistas Dräger. Redes de gases clínicos.</p>
-        <a href="#ingenieria-clinica" class="panel-link">Ver División Médica →</a>
-      </div>
+  <!-- Right: dark panel with service cards -->
+  <div class="hero-r">
+    <div class="hero-eyebrow">
+      <span class="status-dot"></span>Gran Concepción, Biobío
     </div>
-    <div class="hero-panel panel-security" onclick="window.location.href='#seguridad'">
-      <div class="panel-icon">🛡️</div>
-      <div>
-        <div class="panel-tag">División Seguridad</div>
-        <div class="panel-title">Seguridad Electrónica<br>y Control de Acceso</div>
-        <p class="panel-desc">CCTV Hikvision AX Hybrid Pro. Cercos eléctricos. Control de acceso. Redes corporativas e infraestructura.</p>
-        <a href="#seguridad" class="panel-link">Ver División Seguridad →</a>
+    <h2 class="hero-pitch">
+      Dos divisiones.<br>Un solo estándar<br>de excelencia.
+    </h2>
+    <p class="hero-pitch-s">
+      Ingeniería aplicada con rigor técnico para clínicas, hospitales,
+      industria y sector corporativo en la Región del Biobío.
+    </p>
+    <div class="vcards">
+      <div class="vcard" onclick="location.href='#ingenieria-clinica'" role="button" tabindex="0">
+        <div class="vic vic-m"><i class="fa-solid fa-heart-pulse"></i></div>
+        <div class="vcard-b">
+          <strong>Equipos Médicos e Ingeniería Clínica</strong>
+          <span>Monitores Dräger · Anestesia · Gases clínicos · Software clínico</span>
+        </div>
+        <i class="fa-solid fa-chevron-right vcard-arr"></i>
+      </div>
+      <div class="vcard" onclick="location.href='#seguridad'" role="button" tabindex="0">
+        <div class="vic vic-s"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="vcard-b">
+          <strong>Seguridad Electrónica y Control de Acceso</strong>
+          <span>CCTV Hikvision · Cercos eléctricos · Acceso biométrico · Redes corporativas</span>
+        </div>
+        <i class="fa-solid fa-chevron-right vcard-arr"></i>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── TRUST BAR ── -->
-<div class="trust-bar">
-  <span class="trust-label">Confianza técnica</span>
-  <div class="trust-items">
-    <div class="trust-item"><span class="trust-dot"></span>Servicio técnico certificado</div>
-    <div class="trust-item"><span class="trust-dot"></span>Especialistas Dräger</div>
-    <div class="trust-item"><span class="trust-dot"></span>Sistemas Hikvision AX Hybrid Pro</div>
-    <div class="trust-item"><span class="trust-dot"></span>RUT 78.375.035-K</div>
-    <div class="trust-item"><span class="trust-dot"></span>Concepción · Talcahuano · San Pedro · Lota</div>
+<!-- ── TRUST TICKER ── -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <div class="strip-set">
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Especialistas Dräger certificados</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Sistemas Hikvision AX Hybrid Pro</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Informes técnicos SEREMI Salud</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Cobertura Gran Concepción</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Soporte técnico 24 / 7</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>RUT 78.375.035-K</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Respaldo documentado</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Concepción · Talcahuano · San Pedro · Lota</div><div class="ssep"></div>
+    </div>
+    <div class="strip-set" aria-hidden="true">
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Especialistas Dräger certificados</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Sistemas Hikvision AX Hybrid Pro</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Informes técnicos SEREMI Salud</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Cobertura Gran Concepción</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Soporte técnico 24 / 7</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>RUT 78.375.035-K</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Respaldo documentado</div><div class="ssep"></div>
+      <div class="si"><i class="fa-solid fa-circle-check"></i>Concepción · Talcahuano · San Pedro · Lota</div><div class="ssep"></div>
+    </div>
   </div>
 </div>
 
-<!-- ── SERVICIOS ── -->
-<section class="services" id="servicios">
-  <div class="section-header reveal">
-    <div class="section-eyebrow">Nuestros Servicios</div>
-    <h2 class="section-title">
-      Soluciones técnicas para entornos<br>
-      donde el error <em>no es una opción</em>
-    </h2>
-    <p class="section-subtitle">
-      Dos divisiones especializadas. Un solo estándar de excelencia técnica y
-      respaldo profesional para clínicas, hospitales, industria y sector corporativo.
-    </p>
-  </div>
-
-  <div class="services-grid">
-    <!-- Servicio 1 -->
-    <div class="service-card reveal" id="ingenieria-clinica">
-      <div class="card-top">
-        <span class="card-num">01</span>
-        <span class="card-icon icon-medical">⚕️</span>
+<!-- ── NOSOTROS ── -->
+<section id="nosotros">
+  <div class="container">
+    <div class="nos-grid">
+      <div class="rv">
+        <div class="sec-label">Por qué Omnitrionix</div>
+        <h2 class="sec-h">Ingeniería con propósito.<br><em>Excelencia sin excepción.</em></h2>
+        <p>Fundada en Concepción, Omnitrionix SpA nació de la convicción de que la tecnología
+        aplicada con rigor técnico salva vidas, protege patrimonio y genera confianza duradera.
+        Trabajamos en entornos donde el margen de error es cero.</p>
+        <p>Nos convertimos en el departamento técnico externo de nuestros clientes: planificamos,
+        ejecutamos y asesoramos con visión de largo plazo y la misma exigencia que el ambiente
+        clínico e industrial requiere.</p>
       </div>
-      <div class="card-category">División Médica</div>
-      <h3 class="card-title">Ingeniería Clínica y Biomédica</h3>
-      <p class="card-desc">
-        Mantenimiento preventivo y correctivo de equipamiento médico de alta complejidad.
-        Somos especialistas certificados en monitores de signos vitales y máquinas de anestesia
-        Dräger, con protocolos de servicio que cumplen estándares clínicos internacionales.
-      </p>
-      <div class="card-tags">
-        <span class="tag">Monitores pacientes</span>
-        <span class="tag">Anestesia Dräger</span>
-        <span class="tag">Gases clínicos</span>
-        <span class="tag">Software clínico</span>
-        <span class="tag">Calibración</span>
+      <div class="facts">
+        <div class="fact rv d1">
+          <div class="fic fic-n"><i class="fa-solid fa-microscope"></i></div>
+          <div class="ftxt">
+            <strong>Precisión Técnica</strong>
+            <span>Cada intervención se ejecuta bajo protocolos documentados, con equipamiento calibrado y personal con formación especializada.</span>
+          </div>
+        </div>
+        <div class="fact rv d2">
+          <div class="fic fic-n"><i class="fa-solid fa-file-contract"></i></div>
+          <div class="ftxt">
+            <strong>Respaldo Documentado</strong>
+            <span>Informes técnicos detallados con trazabilidad completa para auditorías, SEREMI de Salud y procesos de acreditación.</span>
+          </div>
+        </div>
+        <div class="fact rv d3">
+          <div class="fic fic-g"><i class="fa-solid fa-bolt"></i></div>
+          <div class="ftxt">
+            <strong>Respuesta Oportuna</strong>
+            <span>Tiempo de respuesta definido en contrato. Servicio técnico regional con cobertura directa en el Gran Concepción.</span>
+          </div>
+        </div>
+        <div class="fact rv d4">
+          <div class="fic fic-g"><i class="fa-solid fa-handshake"></i></div>
+          <div class="ftxt">
+            <strong>Alianza Estratégica</strong>
+            <span>Somos su departamento técnico externo: planificamos, ejecutamos y asesoramos con visión de largo plazo.</span>
+          </div>
+        </div>
       </div>
-      <button class="card-arrow" onclick="window.location.href='#contacto'">Solicitar servicio →</button>
-    </div>
-
-    <!-- Servicio 2 -->
-    <div class="service-card reveal" id="seguridad">
-      <div class="card-top">
-        <span class="card-num">02</span>
-        <span class="card-icon icon-security">🛡️</span>
-      </div>
-      <div class="card-category">División Seguridad</div>
-      <h3 class="card-title">Seguridad Electrónica, Control de Acceso e Infraestructura</h3>
-      <p class="card-desc">
-        Diseño, instalación y mantenimiento de sistemas CCTV Hikvision AX Hybrid Pro, control de
-        acceso biométrico y cercos eléctricos perimetrales. Complementamos con infraestructura de
-        redes corporativas, cableado estructurado Cat 6A y Wi-Fi empresarial para una solución
-        técnica integral.
-      </p>
-      <div class="card-tags">
-        <span class="tag">CCTV Hikvision</span>
-        <span class="tag">Cerco eléctrico</span>
-        <span class="tag">Control acceso</span>
-        <span class="tag">Portones automáticos</span>
-        <span class="tag">Redes corporativas</span>
-        <span class="tag">Wi-Fi empresarial</span>
-      </div>
-      <button class="card-arrow" onclick="window.location.href='#contacto'">Solicitar servicio →</button>
     </div>
   </div>
 </section>
 
-<!-- ── WHY US ── -->
-<section class="whyus" id="nosotros">
-  <div class="whyus-bg"></div>
-  <div class="section-header reveal">
-    <div class="section-eyebrow">Por qué Omnitrionix</div>
-    <h2 class="section-title">
-      Ingeniería con <em>propósito</em>.<br>Excelencia sin excepción.
-    </h2>
-    <p class="section-subtitle">
-      Fundada en Concepción, construida sobre la convicción de que la tecnología
-      aplicada con rigor salva vidas, protege patrimonio y genera confianza duradera.
-    </p>
+<!-- ── SERVICIOS ── -->
+<section id="servicios">
+  <div class="svc-banner">
+    <div class="container">
+      <div class="svc-hd rv">
+        <div class="sec-label sec-label-lt">Nuestros Servicios</div>
+        <h2 class="sec-h sec-h-lt">Soluciones técnicas donde el error <em>no es una opción</em></h2>
+        <p class="sec-p sec-p-lt">Dos divisiones especializadas. Un solo estándar de excelencia técnica y respaldo profesional para clínicas, hospitales, industria y sector corporativo.</p>
+      </div>
+    </div>
   </div>
 
-  <div class="pillars">
-    <div class="pillar reveal">
-      <span class="pillar-icon">🔬</span>
-      <h4 class="pillar-title">Precisión Técnica</h4>
-      <p class="pillar-desc">Cada intervención se ejecuta bajo protocolos documentados, con equipamiento calibrado y personal con formación especializada de alto nivel.</p>
+  <div class="container">
+    <div class="svc-grid">
+
+      <!-- División Médica -->
+      <div class="scard rv" id="ingenieria-clinica">
+        <div class="scard-top sct-navy">
+          <div class="scard-ic"><i class="fa-solid fa-heart-pulse"></i></div>
+          <h3>Equipos Médicos e Ingeniería Clínica</h3>
+          <p>Mantenimiento preventivo y correctivo de equipamiento médico de alta complejidad. Especialistas certificados en sistemas Dräger con protocolos que cumplen estándares clínicos internacionales.</p>
+        </div>
+        <div class="scard-body">
+          <div class="etitle">Servicios incluidos</div>
+          <div class="egrid">
+            <div class="eitem">Monitores de signos vitales</div>
+            <div class="eitem">Máquinas de anestesia Dräger</div>
+            <div class="eitem">Redes de gases medicinales</div>
+            <div class="eitem">Software clínico especializado</div>
+            <div class="eitem">Calibración y certificación</div>
+            <div class="eitem">Informes técnicos SEREMI</div>
+          </div>
+        </div>
+        <div class="scard-foot">
+          <a href="#contacto" class="scta">Solicitar servicio &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+          <span class="stag st-n">División Médica</span>
+        </div>
+      </div>
+
+      <!-- División Seguridad -->
+      <div class="scard rv d1" id="seguridad">
+        <div class="scard-top sct-green">
+          <div class="scard-ic"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Seguridad Electrónica y Control de Acceso</h3>
+          <p>Diseño, instalación y mantenimiento de sistemas CCTV Hikvision AX Hybrid Pro, control de acceso biométrico y cercos eléctricos, complementados con infraestructura de redes corporativas.</p>
+        </div>
+        <div class="scard-body">
+          <div class="etitle">Servicios incluidos</div>
+          <div class="egrid">
+            <div class="eitem">CCTV Hikvision AX Hybrid Pro</div>
+            <div class="eitem">Cercos eléctricos perimetrales</div>
+            <div class="eitem">Control de acceso biométrico</div>
+            <div class="eitem">Portones automáticos</div>
+            <div class="eitem">Redes corporativas Cat 6A</div>
+            <div class="eitem">Wi-Fi empresarial</div>
+          </div>
+        </div>
+        <div class="scard-foot">
+          <a href="#contacto" class="scta">Solicitar servicio &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+          <span class="stag st-g">División Seguridad</span>
+        </div>
+      </div>
+
     </div>
-    <div class="pillar reveal">
-      <span class="pillar-icon">📋</span>
-      <h4 class="pillar-title">Respaldo Documentado</h4>
-      <p class="pillar-desc">Entregamos informes técnicos detallados por cada servicio, con trazabilidad completa para auditorías, SEREMI de Salud y procesos de acreditación.</p>
+  </div>
+</section>
+
+<!-- ── DIFERENCIADORES ── -->
+<section id="dif">
+  <div class="container">
+    <div class="rv" style="text-align:center;">
+      <div class="sec-label sec-label-cnt">Por qué elegirnos</div>
+      <h2 class="sec-h">Nuestros <em>compromisos</em> técnicos</h2>
     </div>
-    <div class="pillar reveal">
-      <span class="pillar-icon">⚡</span>
-      <h4 class="pillar-title">Respuesta Oportuna</h4>
-      <p class="pillar-desc">Tiempo de respuesta definido en contrato. Servicio técnico regional con cobertura en todo el Gran Concepción para emergencias y mantenimientos programados.</p>
-    </div>
-    <div class="pillar reveal">
-      <span class="pillar-icon">🤝</span>
-      <h4 class="pillar-title">Alianza Estratégica</h4>
-      <p class="pillar-desc">Nos convertimos en el departamento técnico externo de nuestros clientes: planificamos, ejecutamos y asesoramos con visión de largo plazo.</p>
+    <div class="dif-grid rv">
+      <div class="dcell">
+        <div class="dcell-ic"><i class="fa-solid fa-microscope" style="color:var(--navy)"></i></div>
+        <div class="dnum">01</div>
+        <h4>Precisión Técnica</h4>
+        <p>Protocolos documentados, equipamiento calibrado y personal con formación especializada de alto nivel para cada intervención técnica.</p>
+      </div>
+      <div class="dcell">
+        <div class="dcell-ic"><i class="fa-solid fa-file-contract" style="color:var(--navy)"></i></div>
+        <div class="dnum">02</div>
+        <h4>Respaldo Documentado</h4>
+        <p>Informes técnicos con trazabilidad completa para auditorías, SEREMI de Salud y procesos de acreditación institucional.</p>
+      </div>
+      <div class="dcell">
+        <div class="dcell-ic"><i class="fa-solid fa-bolt" style="color:var(--green)"></i></div>
+        <div class="dnum">03</div>
+        <h4>Respuesta Oportuna</h4>
+        <p>Tiempo de respuesta definido contractualmente. Cobertura directa en Gran Concepción, sin intermediarios ni demoras.</p>
+      </div>
+      <div class="dcell">
+        <div class="dcell-ic"><i class="fa-solid fa-handshake" style="color:var(--green)"></i></div>
+        <div class="dnum">04</div>
+        <h4>Alianza Estratégica</h4>
+        <p>Somos su departamento técnico externo. Planificamos, ejecutamos y asesoramos con visión de largo plazo y continuidad.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── DUAL BRAND ── -->
 <div class="dual-brand">
-  <div class="brand-medical">
+  <div class="brand-half bh-light">
     <div class="brand-inner">
-      <div class="brand-label"><span class="brand-dot"></span>División Médica</div>
-      <h2 class="brand-title">
-        La vida del paciente<br>
-        depende del equipo.<br>
+      <div class="brand-lbl"><span class="brand-lbl-dot"></span>División Médica</div>
+      <h2 class="brand-h">
+        La vida del paciente<br>depende del equipo.<br>
         <em>El equipo depende<br>de nosotros.</em>
       </h2>
-      <p class="brand-desc">
-        El equipamiento médico de alta complejidad no admite fallas. Nuestro servicio de
-        ingeniería clínica garantiza la operatividad continua de su infraestructura biomédica
-        con la misma exigencia que el ambiente clínico requiere.
+      <p class="brand-p">
+        El equipamiento médico de alta complejidad no admite fallas. Nuestro servicio garantiza la
+        operatividad continua de su infraestructura biomédica con la misma exigencia que el ambiente
+        clínico requiere.
       </p>
       <ul class="brand-list">
         <li>Mantenimiento preventivo y correctivo de monitores Dräger</li>
         <li>Carga y actualización de software clínico especializado</li>
         <li>Mantenimiento de redes y centrales de gases medicinales</li>
-        <li>Diagnóstico técnico y emisión de informes para SEREMI</li>
+        <li>Diagnóstico técnico e informes para SEREMI de Salud</li>
         <li>Calibración y certificación de equipos de alta complejidad</li>
       </ul>
-      <a href="#contacto" class="btn-medical">Consultar disponibilidad →</a>
+      <a href="#contacto" class="brand-btn bb-navy">Consultar disponibilidad &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
-
-  <div class="brand-security">
+  <div class="brand-half bh-dark">
     <div class="brand-inner">
-      <div class="brand-label"><span class="brand-dot"></span>División Seguridad</div>
-      <h2 class="brand-title">
-        Su operación, protegida<br>
-        con tecnología de nivel<br>
+      <div class="brand-lbl"><span class="brand-lbl-dot"></span>División Seguridad</div>
+      <h2 class="brand-h">
+        Su operación, protegida<br>con tecnología de nivel<br>
         <em>corporativo.</em>
       </h2>
-      <p class="brand-desc">
+      <p class="brand-p">
         Diseñamos y ejecutamos soluciones de seguridad electrónica a medida para empresas,
-        industrias y condominios. Complementamos con infraestructura de redes corporativas,
-        cableado estructurado y Wi-Fi empresarial para una cobertura técnica integral.
+        industrias y condominios, complementadas con infraestructura de redes corporativas y
+        Wi-Fi empresarial para una cobertura técnica integral.
       </p>
       <ul class="brand-list">
         <li>CCTV HD con analítica de video e IA integrada</li>
@@ -993,374 +754,318 @@
         <li>Infraestructura de redes, cableado Cat 6A y Wi-Fi empresarial</li>
         <li>Monitoreo y soporte post-instalación incluido</li>
       </ul>
-      <a href="#contacto" class="btn-security">Solicitar proyecto →</a>
+      <a href="#contacto" class="brand-btn bb-green">Solicitar proyecto &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
 </div>
 
 <!-- ── COBERTURA ── -->
-<section class="coverage" id="cobertura">
-  <div class="coverage-inner reveal">
-    <div class="coverage-text">
-      <div class="section-eyebrow" style="justify-content:flex-start; margin-bottom:1rem;">Cobertura Regional</div>
-      <h2 class="coverage-title">Presencia técnica en<br>todo el Gran Concepción</h2>
-      <p class="coverage-desc">
-        Con base en Concepción, brindamos servicio técnico directo en todo el eje
-        metropolitano del Biobío. Respuesta ágil, sin intermediarios, con el mismo
-        estándar de calidad en cada territorio.
-      </p>
-      <div class="zones">
-        <span class="zone">Concepción</span>
-        <span class="zone">Talcahuano</span>
-        <span class="zone">San Pedro de la Paz</span>
-        <span class="zone">Hualpén</span>
-        <span class="zone">Lota</span>
-        <span class="zone">Coronel</span>
-        <span class="zone">Chiguayante</span>
-        <span class="zone">Penco</span>
+<section id="cobertura">
+  <div class="container">
+    <div class="cob-grid">
+      <div class="rv">
+        <div class="sec-label sec-label-lt">Cobertura Regional</div>
+        <h2 class="sec-h sec-h-lt">Presencia técnica en todo el <em>Gran Concepción</em></h2>
+        <p class="sec-p sec-p-lt">
+          Con base en Concepción, brindamos servicio técnico directo en todo el eje
+          metropolitano del Biobío. Respuesta ágil, sin intermediarios, con el mismo estándar
+          de calidad en cada territorio.
+        </p>
+        <div class="met-grid rv d1">
+          <div class="met">
+            <div class="met-n">2</div>
+            <div class="met-l">Divisiones<br>Especializadas</div>
+          </div>
+          <div class="met">
+            <div class="met-n"><span>8+</span></div>
+            <div class="met-l">Comunas<br>en Cobertura</div>
+          </div>
+          <div class="met">
+            <div class="met-n">24/7</div>
+            <div class="met-l">Soporte<br>Técnico</div>
+          </div>
+          <div class="met">
+            <div class="met-n"><span>100%</span></div>
+            <div class="met-l">Respaldo<br>Documentado</div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="metrics">
-      <div class="metric">
-        <div class="metric-num">2</div>
-        <div class="metric-label">Divisiones<br>especializadas</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num"><span>8+</span></div>
-        <div class="metric-label">Comunas<br>en cobertura</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num">24/7</div>
-        <div class="metric-label">Soporte técnico<br>disponible</div>
-      </div>
-      <div class="metric">
-        <div class="metric-num"><span>100%</span></div>
-        <div class="metric-label">Respaldo<br>documentado</div>
+      <div>
+        <div class="cob-cards rv d1">
+          <div class="cobcard">
+            <div class="cico cico-g"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div><strong>División Equipos Médicos</strong><span>Concepción · Talcahuano · San Pedro · Biobío</span></div>
+          </div>
+          <div class="cobcard">
+            <div class="cico cico-n"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><strong>División Seguridad Electrónica</strong><span>Gran Concepción y Región del Biobío</span></div>
+          </div>
+          <div class="cobcard">
+            <div class="cico cico-n"><i class="fa-solid fa-location-dot"></i></div>
+            <div><strong>Técnico en terreno</strong><span>Sin intermediarios · Respuesta directa</span></div>
+          </div>
+        </div>
+        <div class="zones rv d2">
+          <span class="zone">Concepción</span>
+          <span class="zone">Talcahuano</span>
+          <span class="zone">San Pedro de la Paz</span>
+          <span class="zone">Hualpén</span>
+          <span class="zone">Lota</span>
+          <span class="zone">Coronel</span>
+          <span class="zone">Chiguayante</span>
+          <span class="zone">Penco</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ── CLIENTES ── -->
-<section class="clientes">
-  <div class="section-header reveal">
-    <div class="section-eyebrow">Sectores que atendemos</div>
-    <h2 class="section-title">
-      Clientes que confían en<br><em>nuestra ingeniería</em>
-    </h2>
-    <p class="section-subtitle">
-      Dos divisiones especializadas — Equipos Médicos y Seguridad Electrónica — al servicio
-      del sector salud, industria y sector privado en la Región del Biobío.
-    </p>
-  </div>
-
-  <div class="clientes-grid">
-    <div class="cliente-card reveal">
-      <div class="cliente-card-top">
-        <div class="cliente-logo-mark lm-blue">HSP</div>
-        <div class="cliente-info">
-          <div class="cliente-sector">Salud Pública</div>
-          <div class="cliente-nombre">Hospital de Alta Complejidad</div>
-        </div>
-      </div>
-      <p class="cliente-servicio">Mantenimiento preventivo y correctivo de monitores Dräger y redes de gases medicinales en unidades de cuidados intensivos.</p>
-      <span class="cliente-tag">Ingeniería Clínica</span>
+<section id="clientes">
+  <div class="container">
+    <div class="rv" style="text-align:center; margin-bottom:2.5rem;">
+      <div class="sec-label sec-label-cnt">Sectores que atendemos</div>
+      <h2 class="sec-h">Clientes que confían en<br><em>nuestra ingeniería</em></h2>
+      <p class="sec-p sec-p-cnt">Dos divisiones especializadas al servicio del sector salud, industria y sector privado en la Región del Biobío.</p>
     </div>
-
-    <div class="cliente-card reveal">
-      <div class="cliente-card-top">
-        <div class="cliente-logo-mark lm-teal">CLN</div>
-        <div class="cliente-info">
-          <div class="cliente-sector">Salud Privada</div>
-          <div class="cliente-nombre">Clínica Privada Regional</div>
+    <div class="cli-grid">
+      <div class="clicard rv">
+        <div class="clicard-top">
+          <div class="cli-mark cm-blue">HSP</div>
+          <div><div class="cli-sector">Salud Pública</div><div class="cli-name">Hospital de Alta Complejidad</div></div>
         </div>
+        <p class="cli-svc">Mantenimiento preventivo y correctivo de monitores Dräger y redes de gases medicinales en unidades de cuidados intensivos.</p>
+        <span class="cli-tag">Ingeniería Clínica</span>
       </div>
-      <p class="cliente-servicio">Calibración y certificación de equipos de anestesia Dräger, con emisión de informes técnicos para acreditación SEREMI.</p>
-      <span class="cliente-tag">Equipamiento Médico</span>
-    </div>
-
-    <div class="cliente-card reveal">
-      <div class="cliente-card-top">
-        <div class="cliente-logo-mark lm-slate">IND</div>
-        <div class="cliente-info">
-          <div class="cliente-sector">Industria</div>
-          <div class="cliente-nombre">Planta Industrial Portuaria</div>
+      <div class="clicard rv d1">
+        <div class="clicard-top">
+          <div class="cli-mark cm-teal">CLN</div>
+          <div><div class="cli-sector">Salud Privada</div><div class="cli-name">Clínica Privada Regional</div></div>
         </div>
+        <p class="cli-svc">Calibración y certificación de equipos de anestesia Dräger, con emisión de informes técnicos para acreditación SEREMI de Salud.</p>
+        <span class="cli-tag">Equipamiento Médico</span>
       </div>
-      <p class="cliente-servicio">Diseño e instalación de sistema CCTV Hikvision AX Hybrid Pro con analítica de video, cerco eléctrico perimetral y control de acceso vehicular.</p>
-      <span class="cliente-tag">Seguridad Electrónica</span>
-    </div>
-
-    <div class="cliente-card reveal">
-      <div class="cliente-card-top">
-        <div class="cliente-logo-mark lm-indigo">EDU</div>
-        <div class="cliente-info">
-          <div class="cliente-sector">Educación</div>
-          <div class="cliente-nombre">Institución Educacional</div>
+      <div class="clicard rv d2">
+        <div class="clicard-top">
+          <div class="cli-mark cm-slate">IND</div>
+          <div><div class="cli-sector">Industria</div><div class="cli-name">Planta Industrial Portuaria</div></div>
         </div>
+        <p class="cli-svc">Diseño e instalación de sistema CCTV Hikvision AX Hybrid Pro con analítica de video, cerco eléctrico perimetral y control de acceso vehicular.</p>
+        <span class="cli-tag">Seguridad Electrónica</span>
       </div>
-      <p class="cliente-servicio">Infraestructura de red de datos, cableado estructurado categoría 6A y solución Wi-Fi empresarial de cobertura total en campus.</p>
-      <span class="cliente-tag">Infraestructura TI</span>
-    </div>
-
-    <div class="cliente-card reveal">
-      <div class="cliente-card-top">
-        <div class="cliente-logo-mark lm-gold">CDM</div>
-        <div class="cliente-info">
-          <div class="cliente-sector">Residencial</div>
-          <div class="cliente-nombre">Condominio Empresarial</div>
+      <div class="clicard rv d3">
+        <div class="clicard-top">
+          <div class="cli-mark cm-ind">EDU</div>
+          <div><div class="cli-sector">Educación</div><div class="cli-name">Institución Educacional</div></div>
         </div>
+        <p class="cli-svc">Infraestructura de red de datos, cableado estructurado categoría 6A y solución Wi-Fi empresarial de cobertura total en campus.</p>
+        <span class="cli-tag">Infraestructura TI</span>
       </div>
-      <p class="cliente-servicio">Sistema integrado de videovigilancia, alarmas perimetrales, portones automáticos y control de acceso biométrico para 3 torres.</p>
-      <span class="cliente-tag">Control de Acceso</span>
-    </div>
-
-    <div class="cliente-card reveal">
-      <div class="cliente-card-top">
-        <div class="cliente-logo-mark lm-dark">MUN</div>
-        <div class="cliente-info">
-          <div class="cliente-sector">Sector Público</div>
-          <div class="cliente-nombre">Institución Gubernamental</div>
+      <div class="clicard rv d1">
+        <div class="clicard-top">
+          <div class="cli-mark cm-gold">CDM</div>
+          <div><div class="cli-sector">Residencial</div><div class="cli-name">Condominio Empresarial</div></div>
         </div>
+        <p class="cli-svc">Sistema integrado de videovigilancia, alarmas perimetrales, portones automáticos y control de acceso biométrico para 3 torres.</p>
+        <span class="cli-tag">Control de Acceso</span>
       </div>
-      <p class="cliente-servicio">Auditoría técnica de infraestructura existente, levantamiento de sistemas y consultoría especializada para licitación de equipamiento.</p>
-      <span class="cliente-tag">Auditoría Técnica</span>
+      <div class="clicard rv d2">
+        <div class="clicard-top">
+          <div class="cli-mark cm-dark">MUN</div>
+          <div><div class="cli-sector">Sector Público</div><div class="cli-name">Institución Gubernamental</div></div>
+        </div>
+        <p class="cli-svc">Auditoría técnica de infraestructura existente, levantamiento de sistemas y consultoría especializada para licitación de equipamiento.</p>
+        <span class="cli-tag">Auditoría Técnica</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── CONTACTO ── -->
-<section class="contacto" id="contacto">
-  <div class="contacto-inner">
-
-    <!-- Columna izquierda: info -->
-    <div class="contacto-info reveal">
-      <div class="section-eyebrow" style="justify-content:flex-start; margin-bottom:1.25rem;">Contacto</div>
-      <h2>¿Necesita un aliado técnico<br>de confianza para su operación?</h2>
-      <p>
-        Cuéntenos sus desafíos de ingeniería. Evaluamos su caso sin costo
-        y diseñamos una propuesta técnica a medida en 48 horas hábiles.
-      </p>
-      <div class="contacto-links">
-        <a href="mailto:contacto@omnitrionix.cl" class="contacto-link">
-          <div class="contacto-link-icon">✉️</div>
-          <div class="contacto-link-text">
-            <span class="contacto-link-label">Correo electrónico</span>
-            <span class="contacto-link-val">contacto@omnitrionix.cl</span>
+<section id="contacto">
+  <div class="container">
+    <div class="contact-hd rv">
+      <div class="sec-label sec-label-cnt">Contacto</div>
+      <h2 class="sec-h">¿Necesita un aliado técnico<br>de <em>confianza</em>?</h2>
+      <p class="sec-p sec-p-cnt">Cuéntenos sus desafíos de ingeniería. Evaluamos su caso sin costo y diseñamos una propuesta técnica a medida en 48 horas hábiles.</p>
+    </div>
+    <div class="cwrap rv">
+      <div class="c-l">
+        <h2>Hablemos de su <em>proyecto</em></h2>
+        <p>Cuéntenos sus necesidades y le respondemos con una propuesta técnica detallada en 48 horas hábiles.</p>
+        <div class="crows">
+          <div class="crow">
+            <div class="crow-ic"><i class="fa-solid fa-envelope"></i></div>
+            <div class="crow-lbl">
+              <small>Correo electrónico</small>
+              <a href="mailto:contacto@omnitrionix.cl">contacto@omnitrionix.cl</a>
+            </div>
           </div>
-        </a>
-        <a href="https://wa.me/56964139926" class="contacto-link" target="_blank" rel="noopener noreferrer">
-          <div class="contacto-link-icon">📱</div>
-          <div class="contacto-link-text">
-            <span class="contacto-link-label">WhatsApp técnico</span>
-            <span class="contacto-link-val">+56 9 6413 9926</span>
+          <div class="crow">
+            <div class="crow-ic"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="crow-lbl">
+              <small>WhatsApp técnico</small>
+              <a href="https://wa.me/56964139926" target="_blank" rel="noopener">+56 9 6413 9926</a>
+            </div>
           </div>
-        </a>
-        <div class="contacto-link">
-          <div class="contacto-link-icon">📍</div>
-          <div class="contacto-link-text">
-            <span class="contacto-link-label">Ubicación</span>
-            <span class="contacto-link-val">Concepción, Región del Biobío</span>
+          <div class="crow">
+            <div class="crow-ic"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="crow-lbl">
+              <small>Ubicación</small>
+              <span>Concepción, Región del Biobío</span>
+            </div>
+          </div>
+          <div class="crow">
+            <div class="crow-ic"><i class="fa-solid fa-clock"></i></div>
+            <div class="crow-lbl">
+              <small>Horario de atención</small>
+              <span>Lun–Vie 08:00–18:00 · Emergencias 24/7</span>
+            </div>
           </div>
         </div>
-        <div class="contacto-link">
-          <div class="contacto-link-icon">🕐</div>
-          <div class="contacto-link-text">
-            <span class="contacto-link-label">Horario de atención</span>
-            <span class="contacto-link-val">Lun–Vie 08:00–18:00 · Emergencias 24/7</span>
+        <hr class="cdvd" />
+        <p class="cnote">RUT 78.375.035-K · Concepción, Biobío, Chile<br>Empresa de ingeniería y servicios tecnológicos.</p>
+      </div>
+      <div class="c-r">
+        <form id="contactForm" novalidate>
+          <div class="frow">
+            <div class="fgrp">
+              <label for="nombre">Nombre *</label>
+              <input class="fc" type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required />
+            </div>
+            <div class="fgrp">
+              <label for="empresa">Empresa</label>
+              <input class="fc" type="text" id="empresa" name="empresa" placeholder="Clínica / Hospital / Empresa" />
+            </div>
           </div>
+          <div class="fgrp">
+            <label for="email">Correo electrónico *</label>
+            <input class="fc" type="email" id="email" name="email" placeholder="juan@empresa.cl" required />
+          </div>
+          <div class="fgrp">
+            <label for="servicio">Servicio de interés *</label>
+            <select class="fc" id="servicio" name="servicio" required>
+              <option value="" disabled selected>Seleccione un servicio…</option>
+              <option value="equipos-medicos">Equipos Médicos e Ingeniería Clínica</option>
+              <option value="seguridad">Seguridad Electrónica y Control de Acceso</option>
+              <option value="redes-infra">Redes Corporativas e Infraestructura</option>
+              <option value="otro">Otro / Consulta general</option>
+            </select>
+          </div>
+          <div class="fgrp">
+            <label for="mensaje">Mensaje *</label>
+            <textarea class="fc" id="mensaje" name="mensaje" placeholder="Describa brevemente su necesidad o equipo a revisar…" required></textarea>
+          </div>
+          <button class="btn-form" type="submit" id="submitBtn">
+            Enviar solicitud &nbsp;<i class="fa-solid fa-paper-plane"></i>
+          </button>
+          <div class="form-error" id="formError">
+            Hubo un problema al enviar. Por favor intente nuevamente o escríbanos directamente a contacto@omnitrionix.cl
+          </div>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>Solicitud enviada</h4>
+          <p>Nos pondremos en contacto dentro de las próximas 48 horas hábiles.</p>
         </div>
       </div>
     </div>
-
-    <!-- Columna derecha: formulario -->
-    <div class="contact-form reveal" id="formulario">
-      <div class="contact-form-title">Solicitar cotización</div>
-
-      <form id="contactForm" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="nombre">Nombre *</label>
-            <input class="form-input" type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="empresa">Empresa</label>
-            <input class="form-input" type="text" id="empresa" name="empresa" placeholder="Clínica / Hospital / Empresa" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="email">Correo electrónico *</label>
-          <input class="form-input" type="email" id="email" name="email" placeholder="juan@empresa.cl" required />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="servicio">Servicio de interés *</label>
-          <select class="form-select" id="servicio" name="servicio" required>
-            <option value="" disabled selected>Seleccione un servicio…</option>
-            <option value="equipos-medicos">Equipos Médicos e Ingeniería Clínica</option>
-            <option value="seguridad">Seguridad Electrónica y Control de Acceso</option>
-            <option value="redes-infra">Redes Corporativas e Infraestructura</option>
-            <option value="otro">Otro / Consulta general</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="mensaje">Mensaje *</label>
-          <textarea class="form-textarea" id="mensaje" name="mensaje" placeholder="Describa brevemente su necesidad o equipo a revisar…" required></textarea>
-        </div>
-
-        <button class="form-submit" type="submit">
-          Enviar solicitud →
-        </button>
-        <div class="form-error" id="formError">
-          Hubo un problema al enviar. Por favor intente nuevamente o escríbanos a contacto@omnitrionix.cl
-        </div>
-      </form>
-
-      <!-- Estado de éxito -->
-      <div class="form-success" id="formSuccess">
-        <span class="form-success-icon">✅</span>
-        <h4>Solicitud enviada</h4>
-        <p>Nos pondremos en contacto dentro de las próximas 48 horas hábiles.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-grid">
-    <div>
-      <div class="nav-logo" style="margin-bottom:0.75rem;">
-        <div class="nav-logo-mark" style="overflow:hidden; padding:0;">
-          <img src="logo.svg" alt="" aria-hidden="true" style="height:70px; width:auto; display:block; margin-top:-8px; margin-left:-41px;" />
+  <div class="container">
+    <div class="foot-in">
+      <div>
+        <div class="foot-logo-wrap">
+          <img src="logo.svg" alt="Omnitrionix SpA" class="foot-logo" />
         </div>
-        <div>
-          <span class="nav-logo-name">Omnitrionix SpA</span>
-          <span class="nav-logo-tagline">Ingeniería y Servicios Tecnológicos</span>
-        </div>
+        <p class="foot-rut">RUT 78.375.035-K · Concepción, Biobío, Chile</p>
       </div>
-      <p class="footer-desc">
-        Empresa especializada en ingeniería clínica biomédica y sistemas de
-        seguridad electrónica para la Región del Biobío, Chile.
-      </p>
-      <p class="footer-rut">RUT: 78.375.035-K · Concepción, Biobío, Chile</p>
-    </div>
-
-    <div>
-      <div class="footer-col-title">Servicios</div>
-      <ul class="footer-links">
-        <li><a href="#ingenieria-clinica">Equipos Médicos</a></li>
-        <li><a href="#ingenieria-clinica">Máquinas de Anestesia Dräger</a></li>
-        <li><a href="#ingenieria-clinica">Redes de Gases Clínicos</a></li>
-        <li><a href="#seguridad">CCTV y Vigilancia</a></li>
-        <li><a href="#seguridad">Control de Acceso</a></li>
-        <li><a href="#seguridad">Redes e Infraestructura</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <div class="footer-col-title">Empresa</div>
-      <ul class="footer-links">
-        <li><a href="#nosotros">Sobre Omnitrionix</a></li>
-        <li><a href="#nosotros">Quiénes somos</a></li>
-        <li><a href="#cobertura">Cobertura regional</a></li>
-        <li><a href="#contacto">Cotización en línea</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <div class="footer-col-title">Contacto</div>
-      <ul class="footer-links">
-        <li><a href="mailto:contacto@omnitrionix.cl">contacto@omnitrionix.cl</a></li>
-        <li><a href="https://wa.me/56964139926" target="_blank" rel="noopener noreferrer">WhatsApp Técnico</a></li>
-        <li><a href="#nosotros">Concepción, Biobío</a></li>
-        <li><a href="#contacto">Lun–Vie 08:00–18:00</a></li>
-        <li><a href="#contacto">Emergencias 24/7</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <span>© 2026 Ingeniería y Servicios Tecnológicos Omnitrionix SpA. Todos los derechos reservados.</span>
-    <div class="footer-legal">
-      <a href="#">Política de privacidad</a>
-      <a href="#">Términos de servicio</a>
+      <p class="foot-copy">© 2026 Omnitrionix SpA. Todos los derechos reservados.</p>
+      <nav class="foot-links" aria-label="Contacto rápido">
+        <a href="mailto:contacto@omnitrionix.cl"><i class="fa-solid fa-envelope"></i>contacto@omnitrionix.cl</a>
+        <a href="https://wa.me/56964139926" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+      </nav>
     </div>
   </div>
 </footer>
 
+<!-- ── FLOATING WHATSAPP ── -->
+<a id="wa-btn" href="https://wa.me/56964139926" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
 <script>
-  // ── Navbar scroll ──
-  const navbar = document.getElementById('navbar');
+  // ── Scroll progress + navbar ──
+  const prog = document.getElementById('prog');
+  const hdr  = document.getElementById('hdr');
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    prog.style.width = pct + '%';
+    hdr.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
 
   // ── Mobile menu ──
-  const menuBtn = document.getElementById('menuBtn');
+  const menuBtn    = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', isOpen);
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.classList.toggle('open', open);
   });
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
       menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.classList.remove('open');
     });
+  });
+
+  // ── vcard keyboard nav ──
+  document.querySelectorAll('.vcard[role="button"]').forEach(card => {
+    card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') card.click(); });
   });
 
   // ── Scroll reveal ──
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+  const revealObs = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
+        setTimeout(() => entry.target.classList.add('on'), i * 70);
+        revealObs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(el => observer.observe(el));
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rv').forEach(el => revealObs.observe(el));
 
-  // ── Formulario de contacto → Formspree ──
+  // ── Contact form → Formspree ──
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   const formError   = document.getElementById('formError');
+  const submitBtn   = document.getElementById('submitBtn');
 
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-
-      // Validación client-side
-      const required = contactForm.querySelectorAll('[required]');
+      const fields = contactForm.querySelectorAll('[required]');
       let valid = true;
-      required.forEach(field => {
-        field.style.borderColor = '';
-        if (!field.value.trim()) {
-          field.style.borderColor = 'rgba(239,68,68,0.7)';
-          valid = false;
-        }
+      fields.forEach(f => {
+        f.style.borderColor = '';
+        if (!f.value.trim()) { f.style.borderColor = 'rgba(239,68,68,.6)'; valid = false; }
       });
       if (!valid) return;
 
-      // Estado de carga
-      const submitBtn = contactForm.querySelector('.form-submit');
-      submitBtn.textContent = 'Enviando…';
+      submitBtn.innerHTML = 'Enviando… <i class="fa-solid fa-spinner fa-spin"></i>';
       submitBtn.disabled = true;
       formError.style.display = 'none';
 
       try {
-        const res = await fetch('https://formspree.io/f/xgoqzbwe', {
-          method: 'POST',
-          body: new FormData(contactForm),
+        const res  = await fetch('https://formspree.io/f/xgoqzbwe', {
+          method: 'POST', body: new FormData(contactForm),
           headers: { 'Accept': 'application/json' }
         });
-
         const data = await res.json();
-
         if (res.ok) {
           contactForm.style.display = 'none';
           formSuccess.style.display = 'block';
@@ -1369,25 +1074,20 @@
         }
       } catch {
         formError.style.display = 'block';
-        submitBtn.textContent = 'Enviar solicitud →';
+        submitBtn.innerHTML = 'Enviar solicitud &nbsp;<i class="fa-solid fa-paper-plane"></i>';
         submitBtn.disabled = false;
       }
     });
-
-    // Limpia borde rojo al corregir campo
-    contactForm.querySelectorAll('[required]').forEach(field => {
-      field.addEventListener('input', () => { field.style.borderColor = ''; });
+    contactForm.querySelectorAll('[required]').forEach(f => {
+      f.addEventListener('input', () => { f.style.borderColor = ''; });
     });
   }
 
-  // ── Smooth scroll for anchors ──
+  // ── Smooth scroll ──
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 </script>
