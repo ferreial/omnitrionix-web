@@ -27,12 +27,14 @@
       --ice: #E8F2FF;
       --clinical-blue: #0A4D8C;
       --clinical-mid: #1666B8;
-      --navy: #0D1B2A;
-      --navy-mid: #152638;
+      --navy: #1A294B;
+      --navy-mid: #1E3256;
       --electric: #1E6FD9;
       --steel: #C8D8E8;
       --gold: #C9A84C;
-      --text-dark: #0D1B2A;
+      --brand-green: #41714E;
+      --brand-teal: #31545A;
+      --text-dark: #1A294B;
       --text-mid: #3A5068;
       --text-light: #6B8299;
       --border-light: #D8E6F2;
@@ -56,7 +58,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 3rem; height: 72px;
-      background: rgba(13,27,42,0.97);
+      background: rgba(26,41,75,0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(200,216,232,0.1);
       transition: height 0.3s ease;
@@ -76,6 +78,7 @@
     }
     .nav-logo-name { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: white; letter-spacing: 0.4px; display: block; }
     .nav-logo-tagline { font-family: var(--font-mono); font-size: 9px; color: var(--steel); letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-top: 1px; }
+    .nav-logo-img { height: 44px; width: auto; display: block; }
 
     .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
     .nav-links a {
@@ -220,7 +223,7 @@
       background: linear-gradient(155deg, #0A1A32 0%, #0C3060 100%);
       border-bottom: 1px solid rgba(200,216,232,0.08);
     }
-    .panel-security { background: linear-gradient(155deg, #0D1B2A 0%, #0A2442 100%); }
+    .panel-security { background: linear-gradient(155deg, #1A294B 0%, #0E2040 100%); }
 
     .panel-icon {
       position: absolute; top: 1.75rem; right: 1.75rem;
@@ -228,7 +231,7 @@
       display: flex; align-items: center; justify-content: center; font-size: 19px;
     }
     .panel-medical .panel-icon { background: rgba(10,77,140,0.4); border: 1px solid rgba(22,102,184,0.35); }
-    .panel-security .panel-icon { background: rgba(30,111,217,0.2); border: 1px solid rgba(30,111,217,0.3); }
+    .panel-security .panel-icon { background: rgba(65,113,78,0.25); border: 1px solid rgba(65,113,78,0.38); }
 
     .panel-tag {
       font-family: var(--font-mono); font-size: 9px; font-weight: 500;
@@ -287,7 +290,7 @@
     }
 
     .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
+      display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 2px; background: var(--border-light);
       border: 1px solid var(--border-light); border-radius: 2px; overflow: hidden;
     }
@@ -311,7 +314,7 @@
       display: flex; align-items: center; justify-content: center; font-size: 19px;
     }
     .icon-medical { background: var(--ice); border: 1px solid rgba(10,77,140,0.12); }
-    .icon-security { background: rgba(13,27,42,0.06); border: 1px solid rgba(13,27,42,0.1); }
+    .icon-security { background: rgba(65,113,78,0.1); border: 1px solid rgba(65,113,78,0.22); }
     .icon-network { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); }
 
     .card-category {
@@ -392,7 +395,7 @@
     .brand-security::before {
       content: 'SECURE'; position: absolute;
       font-family: var(--font-display); font-size: 9rem; font-weight: 600;
-      color: rgba(30,111,217,0.06); top: 50%; right: -1rem;
+      color: rgba(65,113,78,0.07); top: 50%; right: -1rem;
       transform: translateY(-50%); white-space: nowrap; pointer-events: none; z-index: 0;
     }
     .brand-inner { position: relative; z-index: 1; }
@@ -403,10 +406,10 @@
       display: flex; align-items: center; gap: 0.7rem;
     }
     .brand-medical .brand-label { color: var(--clinical-blue); }
-    .brand-security .brand-label { color: var(--gold); }
+    .brand-security .brand-label { color: var(--brand-green); }
     .brand-dot { width: 8px; height: 8px; border-radius: 50%; }
     .brand-medical .brand-dot { background: var(--clinical-blue); }
-    .brand-security .brand-dot { background: var(--gold); }
+    .brand-security .brand-dot { background: var(--brand-green); }
 
     .brand-title { font-family: var(--font-display); font-size: 2.3rem; font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem; }
     .brand-medical .brand-title { color: var(--text-dark); }
@@ -706,7 +709,7 @@
     /* ── MOBILE MENU ── */
     .mobile-menu {
       display: none; position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
-      background: rgba(13,27,42,0.99); padding: 1.5rem 2rem;
+      background: rgba(26,41,75,0.99); padding: 1.5rem 2rem;
       border-bottom: 1px solid rgba(200,216,232,0.1);
       flex-direction: column; gap: 0;
     }
@@ -730,7 +733,9 @@
 <!-- ── NAVBAR ── -->
 <nav class="nav" id="navbar">
   <a href="#inicio" class="nav-logo">
-    <div class="nav-logo-mark">OX</div>
+    <div class="nav-logo-mark" style="overflow:hidden; padding:0;">
+      <img src="logo.svg" alt="" aria-hidden="true" style="height:70px; width:auto; display:block; margin-top:-8px; margin-left:-41px;" />
+    </div>
     <div>
       <span class="nav-logo-name">Omnitrionix</span>
       <span class="nav-logo-tagline">Ingeniería · SpA</span>
@@ -819,7 +824,7 @@
       <div>
         <div class="panel-tag">División Seguridad</div>
         <div class="panel-title">Seguridad Electrónica<br>y Control de Acceso</div>
-        <p class="panel-desc">CCTV Hikvision AX Hybrid Pro. Cercos eléctricos. Portones automáticos. Alarmas perimetrales corporativas.</p>
+        <p class="panel-desc">CCTV Hikvision AX Hybrid Pro. Cercos eléctricos. Control de acceso. Redes corporativas e infraestructura.</p>
         <a href="#seguridad" class="panel-link">Ver División Seguridad →</a>
       </div>
     </div>
@@ -883,40 +888,20 @@
         <span class="card-icon icon-security">🛡️</span>
       </div>
       <div class="card-category">División Seguridad</div>
-      <h3 class="card-title">Seguridad Electrónica y Control de Acceso</h3>
+      <h3 class="card-title">Seguridad Electrónica, Control de Acceso e Infraestructura</h3>
       <p class="card-desc">
-        Diseño, instalación y mantenimiento de sistemas CCTV Hikvision AX Hybrid Pro para
-        entornos corporativos e industriales exigentes. Soluciones integradas de videovigilancia,
-        control de acceso biométrico y cercos eléctricos perimetrales de alta seguridad.
+        Diseño, instalación y mantenimiento de sistemas CCTV Hikvision AX Hybrid Pro, control de
+        acceso biométrico y cercos eléctricos perimetrales. Complementamos con infraestructura de
+        redes corporativas, cableado estructurado Cat 6A y Wi-Fi empresarial para una solución
+        técnica integral.
       </p>
       <div class="card-tags">
         <span class="tag">CCTV Hikvision</span>
         <span class="tag">Cerco eléctrico</span>
         <span class="tag">Control acceso</span>
-        <span class="tag">Alarmas</span>
         <span class="tag">Portones automáticos</span>
-      </div>
-      <button class="card-arrow" onclick="window.location.href='#contacto'">Solicitar servicio →</button>
-    </div>
-
-    <!-- Servicio 3 -->
-    <div class="service-card reveal" id="redes">
-      <div class="card-top">
-        <span class="card-num">03</span>
-        <span class="card-icon icon-network">🌐</span>
-      </div>
-      <div class="card-category">Infraestructura</div>
-      <h3 class="card-title">Redes, Conectividad y Diagnóstico</h3>
-      <p class="card-desc">
-        Infraestructura de redes de datos, cableado estructurado y soluciones Wi-Fi empresarial.
-        Auditorías técnicas en terreno, levantamientos de sistemas y consultorías especializadas
-        para sectores industrial, comercial y gubernamental.
-      </p>
-      <div class="card-tags">
-        <span class="tag">Cableado estructurado</span>
+        <span class="tag">Redes corporativas</span>
         <span class="tag">Wi-Fi empresarial</span>
-        <span class="tag">Auditorías técnicas</span>
-        <span class="tag">Diagnóstico en terreno</span>
       </div>
       <button class="card-arrow" onclick="window.location.href='#contacto'">Solicitar servicio →</button>
     </div>
@@ -996,15 +981,16 @@
         <em>corporativo.</em>
       </h2>
       <p class="brand-desc">
-        Diseñamos y ejecutamos soluciones de seguridad electrónica a medida para empresas
-        industriales, instituciones y condominios. Trabajamos con sistemas Hikvision AX Hybrid Pro,
-        una de las plataformas más avanzadas disponibles en el mercado.
+        Diseñamos y ejecutamos soluciones de seguridad electrónica a medida para empresas,
+        industrias y condominios. Complementamos con infraestructura de redes corporativas,
+        cableado estructurado y Wi-Fi empresarial para una cobertura técnica integral.
       </p>
       <ul class="brand-list">
         <li>CCTV HD con analítica de video e IA integrada</li>
         <li>Cercos eléctricos y alarmas perimetrales industriales</li>
         <li>Control de acceso biométrico y vehicular</li>
         <li>Portones automáticos y barreras con integración central</li>
+        <li>Infraestructura de redes, cableado Cat 6A y Wi-Fi empresarial</li>
         <li>Monitoreo y soporte post-instalación incluido</li>
       </ul>
       <a href="#contacto" class="btn-security">Solicitar proyecto →</a>
@@ -1063,8 +1049,8 @@
       Clientes que confían en<br><em>nuestra ingeniería</em>
     </h2>
     <p class="section-subtitle">
-      Prestamos servicios a instituciones del sector salud, industria y sector privado
-      en la Región del Biobío con el mismo estándar técnico en cada caso.
+      Dos divisiones especializadas — Equipos Médicos y Seguridad Electrónica — al servicio
+      del sector salud, industria y sector privado en la Región del Biobío.
     </p>
   </div>
 
@@ -1114,7 +1100,7 @@
         </div>
       </div>
       <p class="cliente-servicio">Infraestructura de red de datos, cableado estructurado categoría 6A y solución Wi-Fi empresarial de cobertura total en campus.</p>
-      <span class="cliente-tag">Redes y Conectividad</span>
+      <span class="cliente-tag">Infraestructura TI</span>
     </div>
 
     <div class="cliente-card reveal">
@@ -1212,9 +1198,9 @@
           <label class="form-label" for="servicio">Servicio de interés *</label>
           <select class="form-select" id="servicio" name="servicio" required>
             <option value="" disabled selected>Seleccione un servicio…</option>
-            <option value="ingenieria-clinica">Ingeniería Clínica y Biomédica</option>
+            <option value="equipos-medicos">Equipos Médicos e Ingeniería Clínica</option>
             <option value="seguridad">Seguridad Electrónica y Control de Acceso</option>
-            <option value="redes">Redes y Conectividad</option>
+            <option value="redes-infra">Redes Corporativas e Infraestructura</option>
             <option value="otro">Otro / Consulta general</option>
           </select>
         </div>
@@ -1248,7 +1234,9 @@
   <div class="footer-grid">
     <div>
       <div class="nav-logo" style="margin-bottom:0.75rem;">
-        <div class="nav-logo-mark">OX</div>
+        <div class="nav-logo-mark" style="overflow:hidden; padding:0;">
+          <img src="logo.svg" alt="" aria-hidden="true" style="height:70px; width:auto; display:block; margin-top:-8px; margin-left:-41px;" />
+        </div>
         <div>
           <span class="nav-logo-name">Omnitrionix SpA</span>
           <span class="nav-logo-tagline">Ingeniería y Servicios Tecnológicos</span>
@@ -1264,12 +1252,12 @@
     <div>
       <div class="footer-col-title">Servicios</div>
       <ul class="footer-links">
-        <li><a href="#ingenieria-clinica">Ingeniería Clínica</a></li>
-        <li><a href="#ingenieria-clinica">Máquinas de Anestesia</a></li>
+        <li><a href="#ingenieria-clinica">Equipos Médicos</a></li>
+        <li><a href="#ingenieria-clinica">Máquinas de Anestesia Dräger</a></li>
         <li><a href="#ingenieria-clinica">Redes de Gases Clínicos</a></li>
         <li><a href="#seguridad">CCTV y Vigilancia</a></li>
         <li><a href="#seguridad">Control de Acceso</a></li>
-        <li><a href="#redes">Redes y Conectividad</a></li>
+        <li><a href="#seguridad">Redes e Infraestructura</a></li>
       </ul>
     </div>
 
